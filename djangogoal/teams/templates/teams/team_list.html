@@ -1,0 +1,12 @@
+{% extends "teams/_layout.html" %}
+{% load static %}
+{% load team_tags %}
+
+{% block content %}
+    <div class="TeamList">
+        <h1>Yow</h1>
+        {% for team in teams %}
+            {% team %}
+        {% endfor %}
+    </div>
+{% endblock %}

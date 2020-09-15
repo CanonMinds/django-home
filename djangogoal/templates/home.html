@@ -1,0 +1,10 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+<div>
+    <h1>Welcome to Homepage</h1>
+</div>
+<p>
+    There {{ games_today|pluralize:"is,are" }} {{ games_today }} game{{games_today|pluralize}} today! 
+</p>
+{% endblock %}

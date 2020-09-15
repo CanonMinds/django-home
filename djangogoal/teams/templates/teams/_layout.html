@@ -1,0 +1,18 @@
+{% extends "_layout.html" %}
+
+{% block sidebar_content %}
+<ul class="nav nav-sidebar">
+    <li class="active"><a href ="#">Overview
+        <span class="sr-only">(current)</span></a></li>
+    <li><a href="#"> Reports </a></li>
+    <li><a href="#"> Analytics </a></li>
+    <li><a href="#"> Export </a></li>
+</ul>
+<ul>
+    <li><a href="{% url 'teams:create' %}">
+        <span class="glyphicon" aria-hidden="true">
+            Add new team
+        </span></a>
+    </li>
+</ul>
+{% endblock %}
