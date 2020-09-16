@@ -5,11 +5,23 @@ from django.db import models
 # Create your models here.
 POSITIONS = (
     ('GK', 'Goalkeeper'),
-    ('CB', 'Centerlane'),
+    ('CB', 'Center fullback'),
     ('SW', 'Sweeper'),
     ('LFB', 'Left fullback'),
     ('RFB', 'Right fullback'),
-    ('WB', 'Wingback')
+    ('WB', 'Wingback'),
+    ('LM', 'Left midfield'),
+    ('RM', 'Right midfield'),
+    ('DM', 'Defensive midfield'),
+    ('CM', 'Center midfield'),
+    ('WM', 'Wide midfield'),
+    ('CF', 'Center forward'),
+    ('AM', 'Attacking midfield'),
+    ('S', 'Striker'),
+    ('SS', 'Second striker'),
+    ('LW', 'Left winger'),
+    ('RW', 'Right winger'),
+
 )
 
 class Team(models.Model):

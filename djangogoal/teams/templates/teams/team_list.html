@@ -2,11 +2,24 @@
 {% load static %}
 {% load team_tags %}
 
-{% block content %}
-    <div class="TeamList">
-        <h1>Yow</h1>
-        {% for team in teams %}
-            {% team %}
-        {% endfor %}
-    </div>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/icons.css' %}">
+{% endblock %}
+
+{% block body_content %}
+<h1 class="page-header">Dashboard</h1>
+<div class="row placeholders">
+	{% for team in teams %}
+		{% team_avatar team %}
+	{% endfor %}
+</div>
+
+
+<hr>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
+
 {% endblock %}
