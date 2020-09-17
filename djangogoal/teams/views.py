@@ -1,8 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import (ListView, DetailView, CreateView, UpdateView, DeleteView,)
 
+from . import mixins
 from . import models
 
 # Create your views here.
@@ -17,21 +19,45 @@ from . import models
 #     return render(request, 'teams/team_detail.html', {'team': team})
 
 
-class TeamListView(ListView):
+class TeamListView(CreateView, ListView):
     context_object_name = "teams"
+    fields = ("name", "practice_location", "coach")
     model = models.Team
+    template_name = "teams/team_list.html"
 
-class TeamDetailView(DetailView):
+    def get_initial(self):
+        initial = super().get_initial()
+        initial["coach"] = self.request.user.pk
+        return initial
+
+class TeamDetailView(DetailView, UpdateView):
+    fields = ("name", "practice_location", "coach")
     model = models.Team
+    template_name = "teams/team_detail.html"
 
-class TeamCreateView(CreateView):
+class TeamCreateView(LoginRequiredMixin, mixins.PageTitleMixin, CreateView):
+    fields = ("name", "practice_location", "coach")
+    model = models.Team
+    page_title = "Create a new team"
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial["coach"] = self.request.user.pk
+        return initial
+
+class TeamUpdateView(LoginRequiredMixin, mixins.PageTitleMixin, UpdateView):
     fields = ("name", "practice_location", "coach")
     model = models.Team
 
-class TeamUpdateView(UpdateView):
-    fields = ("name", "practice_location", "coach")
-    model = models.Team
+    def get_page_title(self):
+        obj = self.get_object()
+        return "Update {}".format(obj.name)
 
-class TeamDeleteView(DeleteView):
-     model = models.Team
-     succes_url = reverse_lazy("teams:list")
+class TeamDeleteView(LoginRequiredMixin,  DeleteView):
+    model = models.Team
+    succes_url = reverse_lazy("teams:list")
+
+    def get_queryset(self):
+        if not self.request.user.is_superuser:
+            return self.model.objects.filter(coach=self.request.user)
+        return self.model.objects.all()
