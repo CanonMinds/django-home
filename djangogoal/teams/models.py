@@ -26,8 +26,8 @@ POSITIONS = (
 
 class Team(models.Model):
     name = models.CharField(max_length=255)
-    coach = models.ForeignKey(User, related_name='teams', on_delete=models.PROTECT)
-    practice_location = models.CharField(max_length=255)
+    lead = models.ForeignKey(User, related_name='teams', on_delete=models.PROTECT)
+    field_location = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
