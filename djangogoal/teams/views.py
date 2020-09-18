@@ -21,32 +21,32 @@ from . import models
 
 class TeamListView(CreateView, ListView):
     context_object_name = "teams"
-    fields = ("name", "practice_location", "coach")
+    fields = ("name", "field_location", "lead")
     model = models.Team
     template_name = "teams/team_list.html"
 
     def get_initial(self):
         initial = super().get_initial()
-        initial["coach"] = self.request.user.pk
+        initial["lead"] = self.request.user.pk
         return initial
 
 class TeamDetailView(DetailView, UpdateView):
-    fields = ("name", "practice_location", "coach")
+    fields = ("name", "field_location", "lead")
     model = models.Team
     template_name = "teams/team_detail.html"
 
 class TeamCreateView(LoginRequiredMixin, mixins.PageTitleMixin, CreateView):
-    fields = ("name", "practice_location", "coach")
+    fields = ("name", "field_location", "lead")
     model = models.Team
     page_title = "Create a new team"
 
     def get_initial(self):
         initial = super().get_initial()
-        initial["coach"] = self.request.user.pk
+        initial["lead"] = self.request.user.pk
         return initial
 
 class TeamUpdateView(LoginRequiredMixin, mixins.PageTitleMixin, UpdateView):
-    fields = ("name", "practice_location", "coach")
+    fields = ("name", "field_location", "lead")
     model = models.Team
 
     def get_page_title(self):
@@ -59,5 +59,5 @@ class TeamDeleteView(LoginRequiredMixin,  DeleteView):
 
     def get_queryset(self):
         if not self.request.user.is_superuser:
-            return self.model.objects.filter(coach=self.request.user)
+            return self.model.objects.filter(lead=self.request.user)
         return self.model.objects.all()
