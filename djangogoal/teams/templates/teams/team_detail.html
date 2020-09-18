@@ -1,27 +1,29 @@
 {% extends "teams/_layout.html" %}
 
 {% block body_content %}
-    <h1> {{ team.name }}</h1>
-    <p class="muted">Location: {{ team.practice_location}}</p>
-    <p>Coached by: <strong>{{ team.coach.get_full_name|default:team.coach }}</strong></p>
+    <h2 class="" style="text-transform:uppercase; margin-bottom: 0px;"> {{ team.name }}</h2>
+    <p class="muted">Location: {{ team.field_location}}, Lead: {{ team.lead.get_full_name|default:team.lead }}</p>
 
-    <h2>Players</h2>
+    <h4 class="" style="margin-top:20px; text-transform:uppercase;">Development Team</h4>
     <ul>
         {% for player in team.players.all %}
         <li>{{ player.name }} - {{ player.get_position_display }}</li>
         {% endfor %}
     </ul>
 
-    {% if user == team.coach %}
+    {% if user == team.lead %}
     <hr>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p}}
+        <div class="" style="display:inline-block;">
+        <a href="{% url 'teams:update' pk=team.pk %}" class="btn btn-primary">Edit</a>
         <input type="submit" class="btn btn-primary" value="Save">
+        </div>
     </form>
     {% endif %}
 
     <hr>
-    <p><a href="{% url 'teams:update' pk=team.pk %}" class="btn">Edit</a></p>
+    
     
 {% endblock %}
