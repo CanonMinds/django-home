@@ -38,7 +38,7 @@ class TeamDetailView(DetailView, UpdateView):
 class TeamCreateView(LoginRequiredMixin, mixins.PageTitleMixin, CreateView):
     fields = ("name", "field_location", "lead")
     model = models.Team
-    page_title = "Create a new team"
+    page_title = "Create a new service"
 
     def get_initial(self):
         initial = super().get_initial()
