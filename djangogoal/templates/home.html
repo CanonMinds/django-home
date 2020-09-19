@@ -10,6 +10,10 @@
 
 	{% if user.is_authenticated  %}
 	<p>Hi {{user}}! Track your company projects now</p>
+
+	<div class="" style="margin-top: 10px;">
+		<h3 style="margin-top:30px;"><a href="{% url 'teams:list' %}" style="color:white; text-decoration: none;" class="btn btn-primary btn-block">Your Projects</a></h3>
+	</div>
 	
 	{% else %}
 	<p><i>Login to track your company projects</i></p>
