@@ -4,20 +4,29 @@
 
 {% block body_content %}
 
-<div id="meow">
-	<h1>Helloo Moto</h1>
-</div>
-<div class="splasher col-12 col-md-12 col-lg-12" style="background-color:; padding-bottom: 100px;">
-	<h1>Service Catalog</h1>
-	<p><i>Create your company services</i></p>
+<div class="splasher" style="display: flex; justify-content: center; background-color:#eee; border-radius: 20px;">
+	<div class="" style="padding: 20px 20px 30px 20px; text-align: center;">
+	<h2 style="text-transform:uppercase;">Product Catalog</h2>
+
+	{% if user.is_authenticated  %}
+	<p>Hi {{user}}! Track your company projects now</p>
 	
-	<div>
-		<h3><a href="{% url 'teams:list' %}">Current Projects</a></h3>
+	{% else %}
+	<p><i>Login to track your company projects</i></p>
+
+	<div class="" style="margin-top: 200px;">
+		<h3 style="margin-top:30px;"><a href="/admin" style="color:white; text-decoration: none;" class="btn btn-primary btn-block">Login</a></h3>
 	</div>
+	<div class="" style="text-align: center;">
+		<h6 style="margin-top:10px;"><a href="#" style="text-decoration: none;" class="text-primary">Don't have an account? Sign Up!</a></h6>
+	</div>
+	{% endif %}
+	
 	<!-- <p>
 		<a href="#" role="button" class="btn btn-default btn-lg">Sign up</a> or
 		<a href="#" role="button" class="btn btn-default btn-lg">Log in</a>
 	</p> -->
     <!-- <p>There {{ games_today|pluralize:"is, are" }} {{ games_today }} game{{ games_today|pluralize }} today!</p> -->
+	</div>
 </div>
 {% endblock %}
