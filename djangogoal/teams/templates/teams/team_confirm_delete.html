@@ -6,8 +6,8 @@
     
     <form method="POST">
         {% csrf_token %}
-        <input type="submit" class="btn btn-danger" value="Delete">
-        <a href="{% url 'teams:detail' pk=team.pk %}">Cancel</a>
+        <input type="submit" class="btn btn-danger" style="border-radius: 20px; width: 100px;" value="Delete">
+        <a href="{% url 'teams:detail' pk=team.pk %}" class="btn btn-success" style="border-radius: 20px; width: 100px;">Cancel</a>
     </form>
 
 {% endblock %}
