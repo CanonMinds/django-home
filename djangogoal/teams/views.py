@@ -33,6 +33,7 @@ class TeamListView(CreateView, ListView):
 class TeamDetailView(DetailView, UpdateView):
     fields = ("name", "field_location", "lead")
     model = models.Team
+    # success_url = reverse_lazy("teams:list")
     template_name = "teams/team_detail.html"
 
 class TeamCreateView(LoginRequiredMixin, mixins.PageTitleMixin, mixins.SuccessMessageMixin, CreateView):
@@ -59,12 +60,10 @@ class TeamUpdateView(LoginRequiredMixin, mixins.PageTitleMixin, mixins.SuccessMe
 
 class TeamDeleteView(LoginRequiredMixin,  DeleteView):
     model = models.Team
-    # succes_url = reverse_lazy("teams:list")
+    success_url = reverse_lazy("teams:list")
 
     def get_queryset(self):
         if not self.request.user.is_superuser:
             return self.model.objects.filter(lead=self.request.user)
         return self.model.objects.all()
-
-    def get_success_url(self):
-        # return reverse('teams:list', kwargs={'pk': self.object.pk})
+ 
