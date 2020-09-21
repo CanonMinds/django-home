@@ -34,7 +34,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'home' %}">Home</a></li>
                         {% if user.is_authenticated  %}
-                        <li><a href="{% url 'teams:list' %}">Projects</a></li>
+                        <!-- <li><a href="{% url 'teams:list' %}">Projects</a></li> -->
                         <li><a href="#">Settings</a></li>
                         <li><a href="#">Help</a></li>
                         <li><a>{{ user }}</a></li>

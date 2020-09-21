@@ -35,7 +35,7 @@ class TeamDetailView(DetailView, UpdateView):
     model = models.Team
     template_name = "teams/team_detail.html"
 
-class TeamCreateView(LoginRequiredMixin, mixins.PageTitleMixin, CreateView):
+class TeamCreateView(LoginRequiredMixin, mixins.PageTitleMixin, mixins.SuccessMessageMixin, CreateView):
     fields = ("name", "field_location", "lead")
     model = models.Team
     page_title = "Create a new service"
@@ -45,7 +45,7 @@ class TeamCreateView(LoginRequiredMixin, mixins.PageTitleMixin, CreateView):
         initial["lead"] = self.request.user.pk
         return initial
 
-class TeamUpdateView(LoginRequiredMixin, mixins.PageTitleMixin, UpdateView):
+class TeamUpdateView(LoginRequiredMixin, mixins.PageTitleMixin, mixins.SuccessMessageMixin, UpdateView):
     fields = ("name", "field_location", "lead")
     model = models.Team
 
@@ -53,11 +53,18 @@ class TeamUpdateView(LoginRequiredMixin, mixins.PageTitleMixin, UpdateView):
         obj = self.get_object()
         return "Update {}".format(obj.name)
 
+    def get_success_message(self):
+        obj = self.get_object()
+        return "{} was successfully updated!".format(obj.name)
+
 class TeamDeleteView(LoginRequiredMixin,  DeleteView):
     model = models.Team
-    succes_url = reverse_lazy("teams:list")
+    # succes_url = reverse_lazy("teams:list")
 
     def get_queryset(self):
         if not self.request.user.is_superuser:
             return self.model.objects.filter(lead=self.request.user)
         return self.model.objects.all()
+
+    def get_success_url(self):
+        # return reverse('teams:list', kwargs={'pk': self.object.pk})
