@@ -14,18 +14,18 @@
 
     {% if user == team.lead %}
     <hr>
+    <div class="buttonss" style="display:flex">
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p}}
-        <div class="" style="display:inline-block;">
-        <a href="{% url 'teams:update' pk=team.pk %}" class="btn btn-primary" style="border-radius: 20px; width: 100px;">Edit</a>
-        <a href="{% url 'teams:delete' pk=team.pk %}" class="btn btn-primary" style="border-radius: 20px; width: 100px;">Delete</a>
-        <input type="submit" class="btn btn-primary" style="border-radius: 20px; width: 100px;" value="Save">
-        </div>
+        <p><input type="submit" class="btn btn-primary" style="border-radius: 20px; width: 100px;" value="Save"></p>
     </form>
-    {% endif %}
-
+   
     <hr>
-    
-    
+    <!-- <div class="" style="display: flex;"> -->
+    <p><a href="{% url 'teams:update' pk=team.pk %}" class="btn btn-success" style="border-radius: 20px; width: 100px; margin-right: 10px;">Edit</a></p>
+    <p><a href="{% url 'teams:delete' pk=team.pk %}" class="btn btn-danger" style="border-radius: 20px; width: 100px;">Delete</a></p>    
+    <!-- </div> -->
+    </div>
+    {% endif %}
 {% endblock %}
