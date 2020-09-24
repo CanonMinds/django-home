@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name='home'),
     url(r'^hello/$', views.HelloWorldView.as_view(), name='hello'),
     url(r'teams/', include('teams.urls', namespace='teams')),
+    # url(r'tasks/', include('tasks.urls', namespace='tasks')),
 ]
