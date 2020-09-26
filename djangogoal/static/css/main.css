@@ -30,6 +30,7 @@ h1,h2,h3,h4,h5,h6{
 .bg-dark{
 	background-color: #cb3c1c!important;
 	height: 50px;
+	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
 }
 
 #cart-icon{
@@ -42,11 +43,12 @@ h1,h2,h3,h4,h5,h6{
 	display: block;
 	text-align: center;
 	color:#fff;
-	background-color: red;
+	background-color:#3f51b5;
 	width: 20px;
-	height: 25px;
+	height: 20px;
 	border-radius: 50%;
-	font-size: 14px;
+	font-size: 10px;
+	padding-top: 2px;
 }
 
 .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
