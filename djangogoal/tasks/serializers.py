@@ -49,7 +49,7 @@ class TaskSerializer(serializers.ModelSerializer):
         model = models.Task
     
     def get_average_rating(self, obj):
-        average = obj.reviews(Avg('rating')).get('rating__avg')
+        average = obj.reviews.aggregate(Avg('rating')).get('rating__avg')
 
         if average is None:
             return 0

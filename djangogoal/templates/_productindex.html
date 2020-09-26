@@ -7,7 +7,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
         {% load static from staticfiles %}
-        <title>{% block title_tag %}Shield!{% endblock %}</title>
+        <title>{% block title_tag %}Shield{% endblock %}</title>
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -28,37 +28,27 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{% url 'home' %}">Django World</a>
+                    <a class="navbar-brand" href="{% url 'products:products_list' %}">Shopping Cart</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="{% url 'teams:list' %}">Projects</a></li>
+                        {% if user.is_authenticated  %}
+                        <!-- <li><a href="{% url 'teams:list' %}">Projects</a></li> -->
                         <li><a href="#">Settings</a></li>
                         <li><a href="#">Help</a></li>
-
-                        {% if user.is_authenticated  %}
                         <li><a>{{ user }}</a></li>
                         <li><a href="/admin/logout">Log out</a></li>
                         {% else %}
                         <li><a href="/admin">Login</a></li>
                         {% endif %}
-                        
                     </ul>
-                    <form class="navbar-form navbar-right">
-                        <input type="text" class="form-control" placeholder="Search...">
-                    </form>
                 </div>
             </div>
         </nav>
         <div class="container-fluid">
-            <div class="row">
-				{% block sidebar %}
-                <div class="col-sm-3 col-md-2 sidebar">
-					{% block sidebar_content %}{% endblock %}
-                </div>
-				{% endblock %}
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row" style="display: flex; justify-content: center;">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 main">
                     {% block body_content %}{% endblock %}
                 </div>
             </div>

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-# from django.urls import path
+from django.urls import path
 
 #New imports
 
@@ -24,6 +24,7 @@ from rest_framework import routers
 
 from tasks import views as task_views
 from . import views as team_views
+from products import views as products_views
 
 router = routers.SimpleRouter()
 router.register(r'tasks', task_views.TaskViewSet)
@@ -39,6 +40,7 @@ urlpatterns = [
     url(r'^$', team_views.HomeView.as_view(), name='home'),
     url(r'^hello/$', team_views.HelloWorldView.as_view(), name='hello'),
     url(r'teams/', include(('teams.urls', 'teams'), namespace='teams')),
+    url(r'products/', include(('products.urls', 'products'), namespace='products')),
 
     # url(r'tasks/', include('tasks.urls', namespace='tasks')),
 ]
