@@ -29,4 +29,17 @@ class Task(models.Model):
     def __str__(self):
         return self.activity
 
+class Review(models.Model):
+    task = models.ForeignKey(Task, related_name='reviews', on_delete=models.DO_NOTHING )
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    comment = models.TextField(blank=True, default='')
+    rating = models.PositiveIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ['email','task']
+
+    def __str__(self):
+        return '{0.rating} by {0.email} for {0.task}'.format(self)
 

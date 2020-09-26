@@ -8,3 +8,4 @@ class YourModelAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at', )
 
 admin.site.register(models.Task, YourModelAdmin)
+admin.site.register(models.Review)
