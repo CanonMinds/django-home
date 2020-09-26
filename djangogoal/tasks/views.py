@@ -64,9 +64,16 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['get'])
     def reviews(self, request, pk=None):
-        task = self.get_object()
-        serializer = serializers.ReviewSerializer(
-            task.reviews.all(), many=True)
+        self.pagination_class.page_size = 2
+        reviews = models.Review.objects.filter(task_id=pk)
+
+        page = self.paginate_queryset(reviews)
+
+        if page is not None:
+            serializer = serializers.ReviewSerializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = serializer.ReviewSerializer(reviews, many=True)
         return Response(serializer.data)
 
 class ReviewViewSet(mixins.CreateModelMixin,

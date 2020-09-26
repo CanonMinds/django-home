@@ -19,6 +19,8 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = models.Review
 
 class TaskSerializer(serializers.ModelSerializer):
+    # reviews = ReviewSerializer(many=True, read_only=True) #Has a drawback -notscalable of loading many responses
+    # reviews = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='apiv2:review-detail') #Has a drawback since will greatly increased in future. Not scalabale
     reviews = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     
     class Meta: 
