@@ -19,14 +19,26 @@ from django.contrib import admin
 
 #New imports
 
-from . import views
+
+from rest_framework import routers
+
+from tasks import views as task_views
+from . import views as team_views
+
+router = routers.SimpleRouter()
+router.register(r'tasks', task_views.TaskViewSet)
+router.register(r'reviews', task_views.ReviewViewSet)
 
 urlpatterns = [
     url(r'admin/', admin.site.urls, name="admin"),
+
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/v1/tasks/', include('tasks.urls', namespace='tasks')),
-    url(r'^$', views.HomeView.as_view(), name='home'),
-    url(r'^hello/$', views.HelloWorldView.as_view(), name='hello'),
-    url(r'teams/', include('teams.urls', namespace='teams')),
+    url(r'^api/v1/tasks/', include(('tasks.urls','tasks'), namespace='tasks')),
+    url(r'^api/v2/', include((router.urls, 'tasks'))),
+
+    url(r'^$', team_views.HomeView.as_view(), name='home'),
+    url(r'^hello/$', team_views.HelloWorldView.as_view(), name='hello'),
+    url(r'teams/', include(('teams.urls', 'teams'), namespace='teams')),
+
     # url(r'tasks/', include('tasks.urls', namespace='tasks')),
 ]

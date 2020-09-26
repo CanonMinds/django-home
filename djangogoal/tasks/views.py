@@ -1,7 +1,13 @@
 # from django.shortcuts import render
 
 # Create your views here.
+from django.shortcuts import get_object_or_404
+
 from rest_framework import generics
+from rest_framework import mixins
+from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from . import models
 from . import serializers
@@ -34,6 +40,40 @@ class ListCreateReview(generics.ListCreateAPIView):
     queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerializer
 
+    def get_queryset(self):
+        return self.queryset.filter(task_id=self.kwargs.get('task_pk'))#Learn how to use PK
+
+    def perform_create(self, serializer):
+        task = get_object_or_404(models.Task, pk=self.kwargs.get('task_pk'))
+        serializer.save(task=task)
+
+
 class RetrieveUpdateDestroyReview(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerializer
+
+    def get_object(self):
+        return get_object_or_404(self.get_queryset(),
+            task_id=self.kwargs.get('task_pk'),
+            pk=self.kwargs.get('pk'))
+
+
+class TaskViewSet(viewsets.ModelViewSet):
+    queryset = models.Task.objects.all()
+    serializer_class = serializers.TaskSerializer
+
+    @action(detail=True, methods=['get'])
+    def reviews(self, request, pk=None):
+        task = self.get_object()
+        serializer = serializers.ReviewSerializer(
+            task.reviews.all(), many=True)
+        return Response(serializer.data)
+
+class ReviewViewSet(mixins.CreateModelMixin,
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    mixins.DestroyModelMixin,
+                    viewsets.GenericViewSet):
+    queryset = models.Review.objects.all()
+    serializer_class = serializers.ReviewSerializer
+
