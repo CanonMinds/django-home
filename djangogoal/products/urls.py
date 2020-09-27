@@ -8,7 +8,7 @@ app_name = 'products'
 
 urlpatterns = [
     # url(r'^$', views.ProductsView.as_view(), name='products_list'),
-    url('', views.store, name="products_list"),
-    url('cart/', views.cart, name="cart"),
-    url('checkout/', views.checkout, name="checkout"),
+    url(r'^$', views.store, name="products_list"),
+    url(r'^cart/$', views.cart, name="cart"),
+    url(r'^checkout/$', views.checkout, name="checkout"),
 ]

@@ -40,7 +40,7 @@ urlpatterns = [
     url(r'^$', team_views.HomeView.as_view(), name='home'),
     url(r'^hello/$', team_views.HelloWorldView.as_view(), name='hello'),
     url(r'teams/', include(('teams.urls', 'teams'), namespace='teams')),
-    url(r'products/', include(('products.urls', 'products'), namespace='products')),
+    path(r'products/', include(('products.urls', 'products'))),
 
     # url(r'tasks/', include('tasks.urls', namespace='tasks')),
 ]
