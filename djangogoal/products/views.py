@@ -16,8 +16,20 @@ from .models import *
 #     template_name = "products.html"
  
 def store(request):
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all() #Parent-Child querying'
+        cartItems = order.get_cart_items
+
+    else:
+        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+        items = []
+        cartItems = order['get_cart_items']
+
     products = Product.objects.all()
-    context = {'products': products}
+    context = {'products': products, 'cartItems': cartItems}
     return render(request, 'products/store.html', context)
 
 def cart(request):
@@ -26,11 +38,14 @@ def cart(request):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all() #Parent-Child querying
+        cartItems = order.get_cart_items
+
     else:
-        order = {'get_cart_total':0, 'get_cart_items':0, }
+        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
         items = []
+        cartItems = order['get_cart_items']
         
-    context = {'items':items,'order':order}
+    context = {'items':items,'order':order, 'cartItems': cartItems, }
     return render(request, 'products/cart.html', context)
 
 def checkout(request):
@@ -39,11 +54,14 @@ def checkout(request):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all() #Parent-Child querying
-    else:
-        order = {'get_cart_total':0, 'get_cart_items':0}
-        items = []
+        cartItems = order.get_cart_items
 
-    context = {'items':items,'order':order}
+    else:
+        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+        items = []
+        cartItems = order['get_cart_items']
+
+    context = {'items':items,'order':order, 'cartItems': cartItems}
     return render(request, 'products/checkout.html', context)
 
 def updateItem(request):
@@ -61,9 +79,9 @@ def updateItem(request):
     orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
     
     if action == 'add':
-        orderItem.quantity += 1
+        orderItem.quantity = (orderItem.quantity + 1)
     elif action == 'remove':
-        orderItem -= 1
+        orderItem.quantity = (orderItem.quantity - 1)
 
     orderItem.save()
 

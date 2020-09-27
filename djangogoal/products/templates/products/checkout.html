@@ -37,7 +37,7 @@
             </form>
 		</div>
 		<br>
-                <div class="box-element" id="payment-info">
+                <div class="box-element hidden" id="payment-info">
                     <small>Paypal Options</small>
                 </div>
 	</div>
@@ -61,4 +61,13 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+    var shipping = '{{order.shipping}}'
+
+    if (shipping == 'False'){
+        document.getElementById('shipping-info').innerHTML = ''
+    }
+
+</script>
 {% endblock content %}

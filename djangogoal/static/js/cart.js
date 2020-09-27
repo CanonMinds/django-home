@@ -32,6 +32,10 @@ function updateUserOrder(productId, action){
         body:JSON.stringify({ 'productId':productId, 'action':action })
     })    
     .then((response) =>{
+        if (!response.ok) {
+            // error processing
+            throw 'Error';
+        }
         return response.json()
     })
     .then((data) => {
