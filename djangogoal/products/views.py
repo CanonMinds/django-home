@@ -25,11 +25,21 @@ def cart(request):
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all() #Parent-Child querying
     else:
+        order = {'get_cart_total':0, 'get_cart_items':0, }
         items = []
         
-    context = {'items':items}
+    context = {'items':items,'order':order}
     return render(request, 'products/cart.html', context)
 
 def checkout(request):
-    context = {}
+    
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all() #Parent-Child querying
+    else:
+        order = {'get_cart_total':0, 'get_cart_items':0}
+        items = []
+
+    context = {'items':items,'order':order}
     return render(request, 'products/checkout.html', context)
