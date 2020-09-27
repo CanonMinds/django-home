@@ -17,9 +17,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
 
-#New imports
+
+#Shopping Store imports
+from django.conf.urls.static import static
+from django.conf import settings
 
 
+#Rest New imports
 from rest_framework import routers
 
 from tasks import views as task_views
@@ -44,3 +48,5 @@ urlpatterns = [
 
     # url(r'tasks/', include('tasks.urls', namespace='tasks')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

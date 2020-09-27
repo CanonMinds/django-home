@@ -128,6 +128,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+#For uploading Product images
+MEDIA_URL = '/images/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
 
 #REST Framework
 REST_FRAMEWORK = {

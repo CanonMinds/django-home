@@ -7,7 +7,7 @@
     <div class="row">
         {% for product in products %}
         <div class="col-lg-4 selling">
-            <img class="thumbnail" src="{% static 'images/c.jpg' %}">
+            <img class="thumbnail" src="{{ product.imageURL }}" alt={{product.name}}>
             <div class="box-element product">
                 <h6><strong>{{product.name}}</strong></h6>
                 <hr>
