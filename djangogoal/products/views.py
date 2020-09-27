@@ -4,6 +4,8 @@ from django.views.generic import View, TemplateView
 
 # Create your views here.
 
+from .models import Product
+
 # class ProductsView(View):
 #     def get(self, request):
 #         return HttpResponse("Welcome to our Shopping Cart!")
@@ -12,7 +14,8 @@ from django.views.generic import View, TemplateView
 #     template_name = "products.html"
 
 def store(request):
-    context = {}
+    products = Product.objects.all()
+    context = {'products': products}
     return render(request, 'products/store.html', context)
 
 def cart(request):
