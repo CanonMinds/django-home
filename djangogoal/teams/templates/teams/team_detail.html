@@ -1,0 +1,31 @@
+{% extends "teams/_layout.html" %}
+
+{% block body_content %}
+    <h1 class="page-header"><a href="{% url 'teams:list' %}" style="text-decoration: none; text-transform: uppercase;">Dashboard</a></h1>
+    <h2 class="" style="text-transform:uppercase; margin-bottom: 0px;"> {{ team.name }}</h2>
+    <p class="muted">Location: {{ team.field_location}}, Lead: {{ team.lead.get_full_name|default:team.lead }}</p>
+
+    <h4 class="" style="margin-top:20px; text-transform:uppercase;">Development Team</h4>
+    <ul>
+        {% for player in team.players.all %}
+        <li>{{ player.name }} - {{ player.get_position_display }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if user == team.lead %}
+    <hr>
+    <div class="buttonss" style="display:flex">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <p><input type="submit" class="btn btn-primary" style="border-radius: 20px; width: 100px;" value="Save"></p>
+    </form>
+   
+    <hr>
+    <!-- <div class="" style="display: flex;"> -->
+    <p><a href="{% url 'teams:update' pk=team.pk %}" class="btn btn-success" style="border-radius: 20px; width: 100px; margin-right: 10px;">Edit</a></p>
+    <p><a href="{% url 'teams:delete' pk=team.pk %}" class="btn btn-danger" style="border-radius: 20px; width: 100px;">Delete</a></p>    
+    <!-- </div> -->
+    </div>
+    {% endif %}
+{% endblock %}
