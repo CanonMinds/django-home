@@ -2,8 +2,13 @@
 {% load static %}
 
 {% block content %}
-<h3>Our Menu</h3>
-
+    <div class="my-3" style="display: flex; justify-content: space-between;">
+        <h4>Our Menu</h4>
+        <a href="{% url 'products:cart' %}"><button class="btn btn-outline-primary order-btn">Total Orders:  <strong>{{ cartItems }}</strong></button></a>
+    </div>
+    <div>
+        <button id="orderupdate-status" class="mb-3 btn btn-outline-success orderupdate-btn btn-block hidden"></button>
+    </div>
     <div class="row">
         {% for product in products %}
         <div class="col-lg-4 selling">
@@ -12,9 +17,14 @@
                 <h6><strong>{{product.name}}</strong></h6>
                 <hr>
 
-                <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-                <a class="btn btn-outline-success view-btn" href="#">View</a>
-                <h5 style="display: inline-block; float: right"><strong>P{{product.price|floatformat:2}}</strong></h5>
+                
+                <div style="display: flex; justify-content:space-between;  align-items: center;">
+                    <div style="display: flex; justify-content:start;  align-items: center;">
+                        <button data-name="{{product.name}}" data-product="{{product.id}}" data-action="add" class="btn btn-outline-primary add-btn update-cart">Add to Cart</button>
+                        <button class="btn btn-outline-success add-btn update-cart">View</button>
+                    </div>    
+                <h6 style="margin-bottom: 0px;"><strong>P{{product.price|floatformat:2}}</strong></h6>
+                </div>
             </div>
         </div>
        {% endfor %}

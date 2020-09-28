@@ -1,4 +1,4 @@
-console.log('cart js Mounted');
+console.log('Cart js Mounted');
 
 var updateBtns = document.getElementsByClassName('update-cart')
 
@@ -6,14 +6,45 @@ for(i=0;i<updateBtns.length; i++){
     updateBtns[i].addEventListener('click', function(){
         var productId = this.dataset.product
         var action = this.dataset.action
-        console.log('productId:', productId, 'Action:', action)
+        var ordername = this.dataset.name
 
-        console.log('USER:', user)
+        
         if (user == 'AnonymousUser'){
             console.log('User is not Authenticated');
         }else{
             updateUserOrder(productId, action)
-            // console.log('User is authenticated, sending data...')
+            document.getElementById('orderupdate-status').classList.remove('hidden')
+            document.getElementById('orderupdate-status').innerHTML = ordername + ' was now added to cart';
+        }
+    })
+}
+
+var arrowupBtns = document.getElementsByClassName('add-cart')
+
+for(i=0;i<arrowupBtns.length; i++){
+    arrowupBtns[i].addEventListener('click', function(){
+        var productId = this.dataset.product
+        var action = this.dataset.action
+
+        if (user == 'AnonymousUser'){
+            console.log('User is not Authenticated');
+        }else{
+            updateUserOrder(productId, action)
+        }
+    })
+}
+
+var arrowdownBtns = document.getElementsByClassName('subtract-cart')
+
+for(i=0;i<arrowupBtns.length; i++){
+    arrowdownBtns[i].addEventListener('click', function(){
+        var productId = this.dataset.product
+        var action = this.dataset.action
+
+        if (user == 'AnonymousUser'){
+            console.log('User is not Authenticated');
+        }else{
+            updateUserOrder(productId, action)
         }
     })
 }
@@ -22,6 +53,7 @@ function updateUserOrder(productId, action){
     console.log('User is authenticated, sending data...')
 
     var url = '/products/update_item/'
+    
 
     fetch(url, {
         method:'POST',
@@ -40,6 +72,7 @@ function updateUserOrder(productId, action){
     })
     .then((data) => {
         console.log('Data:', data)
-        location.reload()
+        
+        // location.reload()
     });
 }
