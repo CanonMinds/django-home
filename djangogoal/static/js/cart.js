@@ -14,7 +14,8 @@ for(i=0;i<updateBtns.length; i++){
         }else{
             updateUserOrder(productId, action)
             document.getElementById('orderupdate-status').classList.remove('hidden')
-            document.getElementById('orderupdate-status').innerHTML = ordername + ' was now added to cart';
+            document.getElementById('orderupdate-status').innerHTML = ordername + ' was now added to your orders';
+            setTimeout(function(){ location.reload(); }, 3000);
         }
     })
 }
@@ -72,7 +73,6 @@ function updateUserOrder(productId, action){
     })
     .then((data) => {
         console.log('Data:', data)
-        
-        // location.reload()
+        location.reload()
     });
 }

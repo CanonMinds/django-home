@@ -141,3 +141,17 @@ h1,h2,h3,h4,h5,h6{
     padding-right: 20px;
     padding-left: 20px;
 }
+
+.style-btn{
+	/* border-top-right-radius: 24px; */
+	border-bottom-left-radius: 24px;
+}
+
+.styleright-btn{
+	border-top-right-radius: 24px;
+	/* border-bottom-left-radius: 24px; */
+}
+
+.navbar-brand{
+	margin-right: 0px;
+}

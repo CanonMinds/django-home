@@ -32,7 +32,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">HOME</a>
+        <a class="navbar-brand" href="{% url 'home' %}"><button class="btn btn-outline-light style-btn">HOME</button></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,15 +40,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'products:products_list' %}">Lark's Kitchen<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'products:products_list' %}"><button class="btn btn-outline-light styleright-btn">LARK'S KITCHEN</button></a>
             </li>
        
           </ul>
           <div class="form-inline my-2 my-lg-0">
-               <a href="/admin/products/product/add/"class="btn login-btn">Add directly</a>
-               <a href="#"class="btn login-btn">Login</a>
-               <a href="#"class="btn signup-btn">Signup</a>
-               
+               <!-- <a href="/admin/products/product/add/"class="btn login-btn">Add directly</a> -->
+               <!-- <a href="#"class="btn login-btn">Login</a> -->
+               <!-- <a href="#"class="btn signup-btn">Signup</a> -->
+               <h5 style="margin: 0px 4px 0px 8px; color:white;">Welcome {{user}}!</h5>
                <a href="{% url 'products:cart' %}">
                   <img  id="cart-icon" src="{% static 'images/cart.png' %}">
               </a>
