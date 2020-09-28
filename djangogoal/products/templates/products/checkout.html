@@ -123,6 +123,29 @@
 
         console.log('Shipping Info:', shippingInfo)
         console.log('User Info:', userFormData)
+
+        var url = '/products/process_order/'
+
+        fetch(url, {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'X-CSRFToken':csrftoken,
+            },
+            body:JSON.stringify({ 'form':userFormData, 'shipping':shippingInfo })
+        })    
+        .then((response) =>{
+            if (!response.ok) {
+                // error processing
+                throw 'Error';
+            }
+            return response.json()
+        }) // first promise
+        .then((data) => {
+            console.log('Succcess:', data)
+            alert('Transaction completed');
+            window.location.href = "{% url 'products:products_list' %}"
+        }); // second promise
     }
 
 </script>
