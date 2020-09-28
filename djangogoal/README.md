@@ -1,0 +1,2 @@
+# DjangoStarter
+Class-based Views
