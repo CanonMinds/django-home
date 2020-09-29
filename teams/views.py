@@ -39,7 +39,7 @@ class TeamDetailView(DetailView, UpdateView):
 class TeamCreateView(LoginRequiredMixin, mixins.PageTitleMixin, mixins.SuccessMessageMixin, CreateView):
     fields = ("name", "field_location", "lead")
     model = models.Team
-    page_title = "Create a new service"
+    page_title = "Create a new employee"
 
     def get_initial(self):
         initial = super().get_initial()
