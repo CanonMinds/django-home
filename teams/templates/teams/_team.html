@@ -2,6 +2,6 @@
 	<a href="{% url 'teams:detail' team.pk %}">
 		<i class="avatar avatar-lg avatar-color-{{ num }} avatar-letter-{{ team.name.0|lower }} rounded" style="border-radius: 50%;"></i>
 		<h4>{{ team.name }}</h4>
-		<span class="text-muted">{{ team.players.count }} consultant{{ team.players.count|pluralize }}</span>
+		<span class="text-muted">{{ team.status.count }} other detail{{ team.status.count|pluralize }}</span>
 	</a>
 </div>

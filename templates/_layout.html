@@ -33,10 +33,10 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="/admin">Admin</a></li>
                         <li><a href="{% url 'teams:list' %}">Projects</a></li>
                         <li><a href="#">Settings</a></li>
                         <li><a href="#">Help</a></li>
-
                         {% if user.is_authenticated  %}
                         <li><a>{{ user }}</a></li>
                         <li><a href="/admin/logout">Log out</a></li>

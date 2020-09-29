@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gmw!wsn(0)ahh8m+c$si(o9syj9s)j(&nh90c)yc188x+verx2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['decagon2.herokuapp.com', '127.0.0.1']
 
@@ -122,8 +122,13 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+LOGIN_REDIRECT_URL = '/google.com/'
+LOGIN_URL='/admin/'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
@@ -158,3 +163,4 @@ REST_FRAMEWORK = {
         'user': '500/minute'
     }
 }
+

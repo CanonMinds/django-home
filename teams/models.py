@@ -3,25 +3,10 @@ from django.urls import reverse
 from django.db import models
 
 # Create your models here.
-POSITIONS = (
-    ('GK', 'Goalkeeper'),
-    ('CB', 'Center fullback'),
-    ('SW', 'Sweeper'),
-    ('LFB', 'Left fullback'),
-    ('RFB', 'Right fullback'),
-    ('WB', 'Wingback'),
-    ('LM', 'Left midfield'),
-    ('RM', 'Right midfield'),
-    ('DM', 'Defensive midfield'),
-    ('CM', 'Center midfield'),
-    ('WM', 'Wide midfield'),
-    ('CF', 'Center forward'),
-    ('AM', 'Attacking midfield'),
-    ('S', 'Striker'),
-    ('SS', 'Second striker'),
-    ('LW', 'Left winger'),
-    ('RW', 'Right winger'),
-
+ACTIVITIES = (
+    ('T1', 'Standby'),
+    ('T2', 'Research'),
+    ('T3', 'Field'),
 )
 
 class Team(models.Model):
@@ -35,11 +20,11 @@ class Team(models.Model):
     def get_absolute_url(self):    
         return reverse("teams:detail", kwargs={"pk": self.pk})
 
-class Player(models.Model):
-    name = models.CharField(max_length=255)
-    age = models.PositiveIntegerField()
-    position = models.CharField(choices=POSITIONS, max_length=3)
-    team = models.ForeignKey(Team, related_name='players', on_delete=models.PROTECT, default='')
+class Status_detail(models.Model):
+    detail = models.CharField(max_length=255)
+    months_active = models.PositiveIntegerField()
+    activity = models.CharField(choices=ACTIVITIES, max_length=3)
+    team = models.ForeignKey(Team, related_name='status', on_delete=models.PROTECT, default='')
 
     def __str__(self):
-        return self.name
+        return self.detail
