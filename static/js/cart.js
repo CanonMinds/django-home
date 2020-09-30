@@ -15,7 +15,7 @@ for(i=0;i<updateBtns.length; i++){
             updateUserOrder(productId, action)
             document.getElementById('orderupdate-status').classList.remove('hidden')
             document.getElementById('orderupdate-status').innerHTML = ordername + ' was now added to your orders';
-            // setTimeout(function(){ location.reload(); }, 3000);
+            setTimeout(function(){ location.reload(); }, 5000);
         }
     })
 }
