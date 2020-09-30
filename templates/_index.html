@@ -19,6 +19,7 @@
         <![endif]-->
     </head>
     <body>
+        {% if user.is_authenticated  %}
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -50,6 +51,7 @@
                 </div>
             </div>
         </nav>
+        {% endif %}
         <div class="container-fluid">
             <div class="row" style="display: flex; justify-content: center;">
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 main">
