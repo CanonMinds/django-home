@@ -10,7 +10,8 @@ for(i=0;i<updateBtns.length; i++){
 
         
         if (user == 'AnonymousUser'){
-            console.log('User is not Authenticated');
+            // console.log('User is not Authenticated');
+            // updateUserOrder(productId, action)
         }else{
             updateUserOrder(productId, action)
             document.getElementById('orderupdate-status').classList.remove('hidden')
@@ -28,7 +29,7 @@ for(i=0;i<arrowupBtns.length; i++){
         var action = this.dataset.action
 
         if (user == 'AnonymousUser'){
-            console.log('User is not Authenticated');
+            // console.log('User is not Authenticated');
         }else{
             updateUserOrder(productId, action)
         }
@@ -43,7 +44,7 @@ for(i=0;i<arrowupBtns.length; i++){
         var action = this.dataset.action
 
         if (user == 'AnonymousUser'){
-            console.log('User is not Authenticated');
+            // console.log('User is not Authenticated');
         }else{
             updateUserOrder(productId, action)
         }
