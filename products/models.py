@@ -5,14 +5,14 @@ from django.contrib.auth.models import User
 class Customer(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, null=True)
-    email = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
 
     def __str__(self):
         return self.name #This gonna be the value that will be displayed in admin panel when we create the model.
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=7, decimal_places=2)
     is_digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     new_image = models.URLField(max_length=200)
