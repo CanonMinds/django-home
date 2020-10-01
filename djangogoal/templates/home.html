@@ -13,8 +13,8 @@
 
 	<div class="" style="margin-top: 10px;">
 		<img src="https://www.flaticon.com/svg/static/icons/svg/3143/3143001.svg" height="200px">
-		<h3 style="margin-top:10px;"><a href="#" style="color:white; text-decoration: none; border-radius: 12px;" class="btn btn-primary btn-block">CATALOG (CRUD)</a></h3>
-		<h3 style="margin-top:10px;"><a href="{% url 'teams:list' %}" style="color:white; text-decoration: none; border-radius: 12px;" class="btn btn-primary btn-block">PROJECTS (CBV)</a></h3>
+		<!-- <h3 style="margin-top:10px;"><a href="#" style="color:white; text-decoration: none; border-radius: 12px;" class="btn btn-primary btn-block">CATALOG (CRUD)</a></h3> -->
+		<h3 style="margin-top:10px;"><a href="{% url 'teams:list' %}" style="color:white; text-decoration: none; border-radius: 12px;" class="btn btn-primary btn-block">EMPLOYEES DETAIL (CBV-CRUD)</a></h3>
 		<h3 style="margin-top:10px;"><a href="/api/v1/tasks/" style="color:white; text-decoration: none; border-radius: 12px;" class="btn btn-primary btn-block">TASKS and REVIEWS LIST (DRF)</a></h3>
 		<h3 style="margin-top:10px;"><a href="{% url 'products:products_list' %}" style="color:white; text-decoration: none; border-radius: 12px;" class="btn btn-primary btn-block">SHOPPING CART</a></h3>
 	</div>
@@ -23,10 +23,10 @@
 
 	<div class="" style="margin-top: 10px;">
 		<img src="https://www.flaticon.com/svg/static/icons/svg/3143/3143001.svg" alt="landing-icon" height="200px">
-		<h3 style="margin-top:10px;"><a href="/admin" style="color:white; text-decoration: none; border-radius: 20px;" class="btn btn-primary btn-block">Login</a></h3>
+		<h3 style="margin-top:10px;"><a href="/admin/login/?next=/" style="color:white; text-decoration: none; border-radius: 20px;" class="btn btn-primary btn-block">Login</a></h3>
 	</div>
 	<div class="" style="text-align: center;">
-		<h6 style="margin-top:10px;"><a href="#" style="text-decoration: none;" class="text-primary">Don't have an account? Sign Up!</a></h6>
+		<h6 style="margin-top:10px;"><a href="#" style="text-decoration: none;" class="text-primary">USERNAME: Raymond PASS:123123</a></h6>
 	</div>
 	{% endif %}
 	</div>

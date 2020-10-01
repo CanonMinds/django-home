@@ -5,10 +5,12 @@
     <h2 class="" style="text-transform:uppercase; margin-bottom: 0px;"> {{ team.name }}</h2>
     <p class="muted">Location: {{ team.field_location}}, Lead: {{ team.lead.get_full_name|default:team.lead }}</p>
 
-    <h4 class="" style="margin-top:20px; text-transform:uppercase;">Development Team</h4>
+    <h4 class="" style="margin-top:20px; text-transform:uppercase;">Other details</h4>
     <ul>
-        {% for player in team.players.all %}
-        <li>{{ player.name }} - {{ player.get_position_display }}</li>
+        {% for status in team.status.all %}
+        <li>{{ status.detail }} - {{ status.get_activity_display }}</li>
+        {% empty %}
+        <li>No Assigned Task yet</li>
         {% endfor %}
     </ul>
 
@@ -18,7 +20,10 @@
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p}}
+        <div class="" style="display: flex;">
         <p><input type="submit" class="btn btn-primary" style="border-radius: 20px; width: 100px;" value="Save"></p>
+        <p><a href="{% url 'teams:list' %}" class="btn btn-success" style="border-radius: 20px; width: 100px;  margin-left:10px">Done</a>
+        </div>
     </form>
    
     <hr>
