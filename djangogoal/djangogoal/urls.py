@@ -37,6 +37,10 @@ router.register(r'reviews', task_views.ReviewViewSet)
 urlpatterns = [
     url(r'admin/', admin.site.urls, name="admin"),
     # url(r'^auth/', include('newauth.urls')),
+
+    url('signup/', team_views.signupPage, name = 'signup'),
+    url('login/', team_views.loginPage, name = 'login'),
+
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/v1/tasks/', include(('tasks.urls','tasks'), namespace='tasks')),
     url(r'^api/v2/', include((router.urls, 'tasks'))),
@@ -44,7 +48,7 @@ urlpatterns = [
     url(r'^$', team_views.HomeView.as_view(), name='home'),
     url(r'^hello/$', team_views.HelloWorldView.as_view(), name='hello'),
     url(r'teams/', include(('teams.urls', 'teams'), namespace='teams')),
-    url(r'products/', include(('products.urls', 'products', namespace='products'))),
+    url(r'products/', include(('products.urls', 'products'), namespace='products')),
 
     # url(r'tasks/', include('tasks.urls', namespace='tasks')),
 ]
