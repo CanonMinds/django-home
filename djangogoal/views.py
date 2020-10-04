@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
-
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
 # def home(request):
 #     return render(request,'home.html')
 
@@ -16,6 +17,22 @@ class HomeView(TemplateView):
 class HelloWorldView(View):
     def get(self, request):
         return HttpResponse("Hello World!")
+
+        
+def signupPage(request):
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form':form}
+    return render(request, 'signup.html', context)
+
+def loginPage(request):
+    context = {}
+    return render(request, 'login.html', context)
 
 
 
