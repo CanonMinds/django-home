@@ -1,2 +1,2 @@
 # DjangoStarter
-Class-based Views
+Class-based Views, DRFs, E-commerce, PayPal APIs
