@@ -40,6 +40,7 @@ urlpatterns = [
 
     url('signup/', team_views.signupPage, name = 'signup'),
     url('login/', team_views.loginPage, name = 'login'),
+    url('logout/', team_views.logoutUser, name = 'logout'),
 
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/v1/tasks/', include(('tasks.urls','tasks'), namespace='tasks')),
