@@ -45,11 +45,15 @@ def loginPage(request):
         if user is not None:
             login(request, user)
             return redirect('home')
+        else:
+            messages.info(request, 'Username OR password is incorrect')
 
     context = {}
     return render(request, 'login.html', context)
 
-
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
 
 #Remember
 #DetailView expects URL argument of either slug or pk
