@@ -30,6 +30,9 @@ from tasks import views as task_views
 from . import views as team_views
 from products import views as products_views
 
+#Locations New Imports
+# from locations import views as location_views
+
 router = routers.SimpleRouter()
 router.register(r'tasks', task_views.TaskViewSet)
 router.register(r'reviews', task_views.ReviewViewSet)
@@ -52,6 +55,9 @@ urlpatterns = [
     url(r'products/', include(('products.urls', 'products'), namespace='products')),
 
     # url(r'tasks/', include('tasks.urls', namespace='tasks')),
+    # url(r'locations/', include(('locations.urls', 'locations'), namespace='search_results')),
+    path(r'locations/', include('locations.urls', 'locations')),
+    # path(r'cities/', include('cities.urls', 'cities')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

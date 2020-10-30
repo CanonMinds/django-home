@@ -1,0 +1,49 @@
+{% extends "_indextopbar.html" %}
+
+{% block body_content %}
+<div>
+  <h4><a href="{% url 'locations:province_list' %}">Back to Province List</a> > Search Results</h4>
+  
+  <div style="margin-top: 30px;">
+  <form action="{% url 'locations:search_result_list' %}" method="get">
+    <input name="q" type="text" placeholder="Enter any keyword, letter, number..."">
+  </form>
+  </div>
+</div>
+
+<div>
+  {% if object_list %}
+
+  {% for province in object_list %}     
+      <a href="#"><h3>Province of {{ province.name }}</h3></a>
+      <ul style="list-style: none">
+          <li>Province: {{ province.name }}</li>
+          <li>Region: {{ province.region }}
+          <li>Total Land Area: {{ province.area }}</li>
+          <li>Products: {{ province.products }}</li>
+      </ul>
+  {% endfor %}
+
+  
+{% else %}
+  <h4><strong>Oops sorry, no results were found. Please try again.</strong></h4>
+
+  <div style="margin-top: 20px;" >
+    <p>Search Suggestions:</p>
+    <p>- Check your spelling.</p>
+    <p>- Try more general words.</p>
+    <p>- Try different words that mean the same thing.</p>
+    <p>- Contact us to request for support and we'll help you find it.</p>
+  </div>
+
+{% endif %}
+</div>
+
+<!-- <div>
+    <div>
+        <h3>Search Results</h3>
+    </div>
+</div> -->
+
+{% endblock %}
+

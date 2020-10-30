@@ -1,0 +1,26 @@
+{% extends "_indextopbar.html" %}
+
+{% block body_content %}
+<!-- <h1>LOCATIONS</h1> -->
+<div style="margin: 20px;">
+
+<h4><strong>List of Available Provinces</strong></h4>
+  <ul>
+    {% for province in object_list %}
+      <li>
+        {{ province }}
+      </li>
+    {% endfor %}
+  </ul>
+
+
+<h4 style="margin-top: 50px;"><strong>Search Available Province Detail</strong></h4>
+
+<form action="{% url 'locations:search_result_list' %}" method="get">
+    <input name="q" type="text" placeholder="Enter any keyword, letter, number..." autocomplete="off">
+</form>
+
+</div>
+
+
+{% endblock %}
