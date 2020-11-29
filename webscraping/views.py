@@ -28,25 +28,25 @@ class WebListView(ListView):
         self.get_html_content    
 
     def get_html_content(self, city):
-        # USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36"
-        # LANGUAGE = "en-US,en;q=0.5"
-        # session = requests.Session()
-        # retry = Retry(connect=3, backoff_factor=0.5)
-        # adapter = HTTPAdapter(max_retries=retry)    
-        # session.mount('http://', adapter)
-        # session.mount('https://', adapter)
-        # session.headers['User-Agent'] = USER_AGENT
-        # session.headers['Accept-Language'] = LANGUAGE
-        # session.headers['Content-Language'] = LANGUAGE
-        # city = city.replace('','+')
-        # html_content = session.get(f'https://www.google.com/search?q=weather+in+{city}').text
+        USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36"
+        LANGUAGE = "en-US,en;q=0.5"
+        session = requests.Session()
+        retry = Retry(connect=3, backoff_factor=0.5)
+        adapter = HTTPAdapter(max_retries=retry)    
+        session.mount('http://', adapter)
+        session.mount('https://', adapter)
+        session.headers['User-Agent'] = USER_AGENT
+        session.headers['Accept-Language'] = LANGUAGE
+        session.headers['Content-Language'] = LANGUAGE
+        city = city.replace('','+')
+        html_content = session.get(f'https://www.google.com/search?q=weather+in+{city}').text
         # response = HttpResponse(html_content)
         # print(response)
         # if response.status_code == 429:
         #     time.sleep(int(response.headers["Retry-After"]))
-        URL = 'https://www.google.com/search?q=weather+in+{city}'
-        html_content = requests.get(URL)
-        print(html_content)
+        # URL = 'https://www.google.com/search?q=weather+in+{city}'
+        # html_content = requests.get(URL)
+        # print(html_content)
         return html_content
 
     def get(self, request):
