@@ -17,6 +17,8 @@
 		<h3 style="margin-top:10px;"><a href="{% url 'teams:list' %}" style="color:white; text-decoration: none; border-radius: 12px;" class="btn btn-primary btn-block">EMPLOYEES DETAIL (CBV-CRUD)</a></h3>
 		<h3 style="margin-top:10px;"><a href="/api/v1/tasks/" style="color:white; text-decoration: none; border-radius: 12px;" class="btn btn-primary btn-block">TASKS and REVIEWS LIST (DRF)</a></h3>
 		<h3 style="margin-top:10px;"><a href="{% url 'products:products_list' %}" style="color:white; text-decoration: none; border-radius: 12px;" class="btn btn-primary btn-block">SHOPPING CART</a></h3>
+		<h3 style="margin-top:10px;"><a href="#" style="color:white; text-decoration: none; border-radius: 12px;" class="btn btn-primary btn-block">CELERY TASK</a></h3>
+		<h3 style="margin-top:10px;"><a href="{% url 'webscraping:webscraping_list' %}" style="color:white; text-decoration: none; border-radius: 12px;" class="btn btn-primary btn-block">WEB SCRAPING</a></h3>
 	</div>
 	{% else %}
 	<p><i>Login to track your Django projects</i></p>
