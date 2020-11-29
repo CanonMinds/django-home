@@ -51,6 +51,7 @@ urlpatterns = [
     url(r'teams/', include(('teams.urls', 'teams'), namespace='teams')),
     url(r'products/', include(('products.urls', 'products'), namespace='products')),
 
+    url(r'webscraping/', include(('webscraping.urls', 'webscraping'), namespace='webscraping')),
     # url(r'tasks/', include('tasks.urls', namespace='tasks')),
 ]
 
