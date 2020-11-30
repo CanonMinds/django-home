@@ -1,8 +1,68 @@
 {% extends "_index.html" %}
 {% block body_content %}
+<style>
+    .carder{
+        border-radius:4px; 
+        padding:10px 0px 20px 0px;
+    }
+    .btn-black{
+        background-color: #6c757d;
+        color:white;
+    }
+</style>
 <div class="" style="text-align: center; margin-top: 50px;">
+
+    <div class="carder" style="">
+        <div class="card border-primary ">
+            <div class="card-body">
+              <img class="card-img-top" width="25%;"src="https://www.logodesignlove.com/wp-content/uploads/2010/06/cnn-logo-white-on-red.jpg" alt="CNN LOGO">
+              <h3 class="card-title" style="text-transform: uppercase;">CNN US Website</h3>
+              <p class="card-text">Some news headings from an US CNN Website</p>
+              <a class="btn btn-danger" style="width: 50%;" href="{% url 'webscraper:module2_list' %}">Scraping Now</a></button>
+            </div>
+          </div>
+    </div>
+
+    <div class="carder" style="">
+        <div class="card border-primary ">
+            <div class="card-body">
+              <img class="card-img-top" width="35%;"src="https://lh3.googleusercontent.com/proxy/QVVFcjg-KfDxlYIdG1p2vffiSQLdcXoInWWG12cN9K1nRhjeius6-PGn9H4FvwthN4vd7FLtKxtUheN6Vc2TdQIfRIJqCBc1OzdYzDyKtoE31mlBm1_JVmpi" alt="TOI LOGO">
+              <h3 class="card-title" style="text-transform: uppercase;">Times of India</h3>
+              <p class="card-text">Some news headings from an India news website</p>
+              <a class="btn btn-black" style="width: 50%;" href="{% url 'webscraper:module1_list' %}">Scraping Now</a></button>
+            </div>
+          </div>
+    </div>
+
+    <div class="carder" style="">
+        <div class="card border-primary ">
+            <div class="card-body">
+              <img class="card-img-top" width="35%;"src="https://pngimage.net/wp-content/uploads/2018/06/philippine-star-logo-png-5.png" alt="PhilippineStar LOGO">
+              <h3 class="card-title" style="text-transform: uppercase;">Philippine Star</h3>
+              <p class="card-text">Some news headings from an Philippine Star news website</p>
+              <a class="btn btn-primary" style="width: 50%;" href="{% url 'webscraper:module3_list' %}">Scraping Now</a></button>
+            </div>
+          </div>
+    </div>
+
+    
+
     <!-- <h1>Data</h1> -->
-    <div>
+    <!-- {% if webdata %}
+    <div class="article">
+        <h2><a href="#">{{ webdata.headline }}</a></h2>
+        <p>{{ webdata.summary }}</p>
+        <h3> {{ webdata.yt_link }}</h3>
+    </div>
+    <hr></hr>
+    {% endif %}
+    {% for i in webdata_list %}
+    <p> {{ i.headline }} </p>
+    {% endfor %} -->
+    <!-- <div class='footer'>
+    </div> -->
+    
+    <!-- <div>
         <div class="">
             <h3 style="text-transform:uppercase">Find the Weather:</h3>
         </div>
@@ -11,7 +71,14 @@
             <input class="form-control" type="text" name="city" id="city" placeholder="Enter Location"><br>
             <input class="btn btn-primary btn-block" type="submit" value="Submit" style="margin-top: 10px;"/>
         </form>
-    </div>
+        {% if weather %}
+            <h3> {{ weather.region }}</h3>
+            <h3> {{ weather.daytime }}</h3>
+            <h3> {{ weather.temp }} °C</h3>
+            <h3> {{ weather.status }}</h3>
+        {% endif %}
+    </div> -->
+
 </div>
 
 

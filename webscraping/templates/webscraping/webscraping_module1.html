@@ -1,0 +1,26 @@
+{% extends "_index.html" %}
+{% block body_content %}
+<div class="" style="text-align: left; margin-top: 50px; padding-right: 20px;">
+    <div class="">
+        <div class="">
+            <div class="" style="display: flex; justify-content: space-between; align-items: center;">
+                <a class="btn btn-primary" style="" href="{% url 'webscraper:webscraping_list' %}">Back</a></button>
+                <h4 class="" style="">{{ toi_news|length }} RESULTS</h4>
+            </div>
+            <div class="">
+                {% if toi_news != null %}
+                <h3 class="text-centre" style="text-transform: uppercase;"> Headlines from Times of india</h3>
+                <h4><a href="{{url1}}" target="blank"> {{url1}} </a></h4>
+                    <ul>
+                        {% for n in toi_news %}
+                            <li>{{n}} </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                <h3 class="text-centre" style="text-transform:;"> OOPS! <br>Sorry, no headlines were found.</h3>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
