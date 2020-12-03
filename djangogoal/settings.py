@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gmw!wsn(0)ahh8m+c$si(o9syj9s)j(&nh90c)yc188x+verx2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['decagon4.herokuapp.com', '127.0.0.1']
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'tasks',
     'products',
     'webscraping',
+    'dynamicmapping',
 ]
 
 MIDDLEWARE = [
