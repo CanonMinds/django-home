@@ -1,0 +1,21 @@
+{% extends "_boostrap.html" %}
+{% block body_content %}
+<style>
+.mr{
+    margin-top: 10px;
+}
+</style>
+
+<div class="" style="margin-top: 40px;">
+    <h4><strong>FIRST NUMBER: {{ given_numbers.0 }}</strong></h4>
+    <h4><strong>SECOND NUMBER: {{ given_numbers.1 }}</strong></h4><br><br>
+    <h4>Sum: {{ total }}</h4>
+    <h4>Difference: {{ difference }}</h4>
+    <h4>Product: {{ product }}</h4>
+    <h4>Quotient: {{ quotient }}</h4>
+</div>
+
+<div class="" style="margin-top: 40px;">
+    <a class="btn btn-primary" href="{% url 'soaptask:soaptask_index' %}">Run Again</a>
+</div>
+{% endblock %}

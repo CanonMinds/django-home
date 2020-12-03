@@ -4,8 +4,9 @@ from django.urls import path
 
 from . import views
 
-app_name = 'dynamicmapping'
+app_name = 'soaptask'
 
 urlpatterns = [
-    url(r'^$', views.home, name="dynamicmapping_index"),
+    url(r'^$', views.home, name="soaptask_index"),
+    url(r'^add/$', views.soapclient, name="soaptask_result"),
 ]
