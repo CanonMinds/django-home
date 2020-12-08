@@ -93,28 +93,40 @@
     golden    = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.');
     var cities = L.layerGroup([littleton, denver, aurora, golden]), overlays={};
     
+    // https://leaflet-extras.github.io/leaflet-providers/preview/ 
+    // Basemaps available
 
     var accessToken =  'pk.eyJ1IjoiY2Fub25taW5kcyIsImEiOiJjazZ6MDhsbm8wd2l5M2VydnlhNnMzNjd2In0.fHuV1kBL3phDqN7ME7fyFg';
     var mapboxUrl = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
     var DarkMatterUrl = 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png';
+    var StamenTonerBackgroundUrl = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}{r}.png';
+    var VoyagerClear = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png';
+    var PositronUrl =  'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
     var mapboxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';    
     
 
     var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
-    darkmatter   = L.tileLayer(DarkMatterUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
-
+    darkmatter   = L.tileLayer(DarkMatterUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
+    tonerbackground = L.tileLayer(StamenTonerBackgroundUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
+    voyagerclear = L.tileLayer(VoyagerClear, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
+    positronnolabel = L.tileLayer(PositronUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});;
+    
     const coordinates1 = [12.6009, 121.1622]     ;     //Main Coordinates
     const coordinates2 = [14.65057, 121.05477];       //Central Coordinates
     const coordinates3 = [42.322982, -71.095139];
-    const coordinates4 = [12.007854, 120.200812];
+    const coordinates4 = [12.007854, 120.200812];     // Coron, Palawan
+    const coordinates5 = [12.45057, 121.05477];       // Philippines left
 
     var mymap = L.map('mapid', {
-        layers: [grayscale, cities]
-    }).setView(coordinates4, 10);
+        layers: [voyagerclear, cities]
+    }).setView(coordinates5, 5.45);
 
     var baseMaps = {
-        "<span style='color: darkblue'>Voyager</span>": grayscale,
-        "Dark Matter": darkmatter
+        "Voyager Clear": voyagerclear,
+        "<span style='color: darkblue'>Positron</span>": positronnolabel,
+        "<span style='color: grey'>Voyager</span>": grayscale,
+        "Dark Matter": darkmatter, 
+        "Toner Background": tonerbackground,
     };
 
     var overlayMaps = {
@@ -122,7 +134,7 @@
         "Clusters": cities
     };
 
-    const jsonurl = "https://raw.githubusercontent.com/awoodruff/leaflet-intro/gh-pages/rodents.geojson"
+    const jsonurl = "https://canonminds.github.io/Philippines-Local-Data/WebMapFlightPoints.geojson"
     $.getJSON(jsonurl, function(data){
 
       var mapIcon = L.icon({
@@ -133,7 +145,8 @@
       var rodents = L.geoJson(data,{
         pointToLayer: function(feature,latlng){
           var marker = L.marker(latlng,{icon: mapIcon});
-          marker.bindPopup(feature.properties.Location + '<br/>' + feature.properties.OPEN_DT);
+          marker.bindPopup(feature.properties.Action  + '<br/>' + feature.properties.ADM3_EN+", "
+          +feature.properties.ADM2_EN + '<br/>');
           return marker;
         }
       });
