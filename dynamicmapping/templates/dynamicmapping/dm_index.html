@@ -118,8 +118,11 @@
     const coordinates5 = [12.45057, 121.05477];       // Philippines left
 
     var mymap = L.map('mapid', {
-        layers: [voyagerclear, cities]
+        layers: [voyagerclear, cities],
+        minZoom: 5.45,
+        maxZoom: 14 
     }).setView(coordinates5, 5.45);
+
 
     var baseMaps = {
         "Voyager Clear": voyagerclear,
@@ -153,8 +156,12 @@
 
       var clusters = L.markerClusterGroup();
           clusters.addLayer(rodents);
-          mymap.addLayer(clusters);          
+          mymap.addLayer(clusters);      
+
+          mymap.fitBounds(clusters.getBounds(),  {padding: [200, 200] });    
     });
+
+
 
     L.control.layers(baseMaps).addTo(mymap);
 
