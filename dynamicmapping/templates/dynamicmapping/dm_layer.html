@@ -4,10 +4,9 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Django World</title>
+  <title>Map</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   
   <!-- LeafletJs -->
@@ -73,10 +72,9 @@
       <div class="col-lg-3">
           <div></div>
           <div class="mt-3">
-            <a href="{% url 'dynamicmapping:dynamicmapping_interior' %}"><button type="button" class="layerbtn btn btn-primary btn-lg btn-block mt-5">Map Layer</button></a>
-          <!-- <button type="button" class="layerbtn btn btn-primary btn-lg btn-block mt-3">Turn off Points Layer</button>   -->
-          <button type="button" class="layerbtn btn btn-secondary btn-lg btn-block mt-3" onClick="window.location.reload()">Clear Filter</button>
-          </div>
+          <button type="button" class="layerbtn btn btn-secondary btn-lg btn-block mt-5" onClick="window.location.reload()">Clear Filter</button>
+          <a href="{% url 'dynamicmapping:dynamicmapping_index' %}"><button type="button" class="layerbtn btn btn-primary btn-lg btn-block mt-3">Back</button></a>  
+        </div>
       </div>  
       <div class="mapbody col-lg-9">
           <div id="mapid"></div>
@@ -86,7 +84,7 @@
 
 
 <script>
-
+    
     var littleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.'),
     denver    = L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.'),
     aurora    = L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.'),
@@ -158,7 +156,7 @@
           clusters.addLayer(rodents);
           mymap.addLayer(clusters);      
 
-          mymap.fitBounds(clusters.getBounds(),  {padding: [200, 200] });    
+        //   mymap.fitBounds(clusters.getBounds(),  {padding: [200, 200] });    
     });
 
 
@@ -177,8 +175,6 @@
     mymap.on('click', onMapClick);
 
 
-
-
     const photoImg = '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" height="150px" width="300px"/>';
     const palawanjsonurl = "https://canonminds.github.io/Philippines-Local-Data/Palawan3ND.geojson"
     $.getJSON(palawanjsonurl, function(data){
@@ -190,9 +186,6 @@
       }
     }).addTo(mymap);
     });
-
-
-
 
     const mapjsonurl = "https://maptimeboston.github.io/leaflet-intro/neighborhoods.geojson"
     $.getJSON(mapjsonurl,function(hoodData){
@@ -213,90 +206,6 @@
       }
       }).addTo(mymap);
     });
-    // const coordinates1 = [12.6009, 121.1622]     ;     //Main Coordinates
-    // const coordinates2 = [14.65057, 121.05477];       //Central Coordinates
-    // const coordinates3 = [42.322982, -71.095139];
-      
-    // var mymap = L.map('mapid').setView(coordinates3, 12);
-    
-    // const mapboxmap = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
-    // const cartomap = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-
-    // var voyager = L.tileLayer(cartomap, {
-    //     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    //     maxZoom: 30,
-    //     tileSize: 512,
-    //     zoomOffset: -1,
-    //     accessToken: 'pk.eyJ1IjoiY2Fub25taW5kcyIsImEiOiJjazZ6MDhsbm8wd2l5M2VydnlhNnMzNjd2In0.fHuV1kBL3phDqN7ME7fyFg',
-    // }).addTo(mymap);
-
-    // var mapIcon = L.icon({
-    //     iconUrl: 'icon.svg',
-    //     iconSize:     [25, 25],         // size of the icon
-    //     shadowSize:   [0,0],            // size of the shadow
-    //     iconAnchor:   [0,0],            // point of the icon which will correspond to marker's location
-    //     shadowAnchor: [0,0],            // the same for the shadow
-    //     popupAnchor:  [13,5]              // point from which the popup should open relative to the iconAnchor
-    // });
-
-    // var marker = L.marker(coordinates2, {icon: mapIcon}).addTo(mymap);
-    // // marker.bindPopup("<b  >Manila!</b><br>I am a popup.").openPopup();
-
-
-    // const jsonurl = "https://raw.githubusercontent.com/awoodruff/leaflet-intro/gh-pages/rodents.geojson"
-    // $.getJSON(jsonurl,function(data){
-    // var ratIcon = L.icon({
-    //   iconUrl: 'icon.svg',
-    //   iconSize: [60,50]
-    // });
-    // var rodents = L.geoJson(data,{
-    //   pointToLayer: function(feature,latlng){
-    //     var marker = L.marker(latlng,{icon: ratIcon});
-    //     marker.bindPopup(feature.properties.Location + '<br/>' + feature.properties.OPEN_DT);
-    //     return marker;
-    //   }
-    // });
-    // var clusters = L.markerClusterGroup();
-    // clusters.addLayer(rodents);
-    // mymap.addLayer(clusters);
-    // });
-
-    // const mapjsonurl = "https://maptimeboston.github.io/leaflet-intro/neighborhoods.geojson"
-    // $.getJSON(mapjsonurl,function(hoodData){
-    // var densitymap = L.geoJson( hoodData, {
-    //   style: function(feature){
-    //     var fillColor,
-    //         density = feature.properties.density;
-    //     if ( density > 80 ) fillColor = "#006837";
-    //     else if ( density > 40 ) fillColor = "#31a354";
-    //     else if ( density > 20 ) fillColor = "#78c679";
-    //     else if ( density > 10 ) fillColor = "#c2e699";
-    //     else if ( density > 0 ) fillColor = "#ffffcc";
-    //     else fillColor = "#f7f7f7";  // no data
-    //     return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .6 };
-    //   },
-    //   onEachFeature: function( feature, layer ){
-    //     layer.bindPopup( "<strong>" + feature.properties.Name + "</strong><br/>" + feature.properties.density + " rats per square mile" )
-    //   }
-    //   }).addTo(mymap);
-    // });
-
-    // // $(toggleLayer(){
-    // //   $('path.leaflet-interactive').click(function(){
-    // //     $(this).toggleClass('closeLayer');
-    // //   });
-    // // });
-    // // var grouplayers = L.layerGroup([marker, rodents, aurora, golden]);
-
-    // // $(document).ready(function(){
-    // //   $("layerbtn").click(function(){
-    // //     $("mapbody").toggleClass("vanish");
-    // //   });
-    // // });
-
-    // function onClick(e) {
-    //   map.removeLayer(rodents);
-    // }
 </script>
 </body>
 </html>
