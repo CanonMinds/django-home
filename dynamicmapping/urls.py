@@ -9,4 +9,5 @@ app_name = 'dynamicmapping'
 urlpatterns = [
     url(r'^$', views.home, name="dynamicmapping_index"),
     url(r'^interior/$', views.interior, name="dynamicmapping_interior"),
+    url(r'^polygon/$', views.polygon, name="dynamicmapping_polygon"),
 ]

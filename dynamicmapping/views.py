@@ -12,3 +12,7 @@ def home(request):
 def interior(request):
     template_name = 'dynamicmapping/dm_layer.html'
     return render(request, template_name,  )
+
+def polygon(request):
+    template_name = 'dynamicmapping/dm_polygon.html'
+    return render(request, template_name,  )
