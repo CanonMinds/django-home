@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Django World</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <!-- LeafletJs -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin="anonymous"/>
+  <!-- MarkCluster -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css"/> 
+  <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7.3/leaflet.css" />
+  <link rel="stylesheet" href="{% static 'css/MarkerCluster.css' %}" />
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script> 
+  <!-- Mapbox -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+
+<style>
+    #mapid { 
+      width: 100%;
+      height: 90vh; 
+    }
+    .mapbody{
+      padding: 15px;
+    }
+    .vanish{
+      display: none;
+    }
+    .leaflet-popup-content-wrapper{
+      background: rgb(111, 51, 51);
+      box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+      color: white;
+    }
+    .leaflet-popup-tip{
+      display: none;
+    }
+    .icsc-btn-secondary{
+      color:white;
+      background-color: #163c47;
+    }
+    .icsc-btn-secondary:hover {
+      background-color:#1f5b6b; /* Green */
+      color: #f3ca63;
+    }
+    .icsc-btn-secondary-current{
+      color:white;
+      background-color: #1f5b6b;;
+    }
+    .icsc-btn-secondary-current:hover{
+      background-color: #216e83;;
+    }
+    }
+</style>
+
+</head>
+<body style="background-color: white">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="display: none;">
+    <a class="navbar-brand" href="#">LCA/CCI/CR</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item vanish">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+    </div>
+  </nav>
+  <div class="container col-lg-12">
+
+    <div class="row">
+      <!-- <div class="col-lg-3">
+          <div></div>
+          <div class="mt-3">
+            <a href="{% url 'dynamicmapping:dynamicmapping_interior' %}"><button type="button" class="layerbtn btn btn-primary btn-lg btn-block mt-5">Map Layer</button></a> -->
+          <!-- <button type="button" class="layerbtn btn btn-primary btn-lg btn-block mt-3">Turn off Points Layer</button>   -->
+          <!-- <button type="button" class="layerbtn btn btn-secondary btn-lg btn-block mt-3" onClick="window.location.reload()">Clear Filter</button>
+          </div>
+      </div>   -->
+      <div class="mapbody col-lg-12">
+          <div id="mapid"></div>
+          <div class="footer" style="display: flex; justify-content: space-between;">
+            <a href="{% url 'dynamicmapping:dynamicmapping_index' %}" class="btn icsc-btn-secondary btn-block" role="button" style="margin-top: 0.5rem;">Main</a>
+            <a href="{% url 'dynamicmapping:dynamicmapping_interior' %}" class="btn icsc-btn-secondary btn-block mx-2" role="button">Points/Polygon</a>
+            <a href="{% url 'dynamicmapping:dynamicmapping_polygon' %}" class="btn icsc-btn-secondary-current btn-block" role="button">Polygons only</a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+
+    var littleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.'),
+    denver    = L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.'),
+    aurora    = L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.'),
+    golden    = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.');
+    var cities = L.layerGroup([littleton, denver, aurora, golden]), overlays={};
+    
+    // https://leaflet-extras.github.io/leaflet-providers/preview/ 
+    // Basemaps available
+
+    var accessToken =  'pk.eyJ1IjoiY2Fub25taW5kcyIsImEiOiJjazZ6MDhsbm8wd2l5M2VydnlhNnMzNjd2In0.fHuV1kBL3phDqN7ME7fyFg';
+    var mapboxUrl = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+    var DarkMatterUrl = 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png';
+    var StamenTonerBackgroundUrl = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}{r}.png';
+    var VoyagerClear = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png';
+    var PositronUrl =  'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
+    var mapboxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';    
+    
+    var WorldStreetMapUrl = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}'
+    var StamenWaterColorUrl = 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg'
+    var VoyagerUrl = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png'
+    var WorldPhysicalUrl = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}'
+    var NatGeoWorldUrl = 'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}'
+
+    var WorldStreetMapAttribution = 'Tiles &copy; Esri &mdash; Source: US National Park Service'
+    var StamenWaterColorAttribution =  'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    var VoyagerAttribution =  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>' 
+    var WorldPhysicalAttribution = 'Tiles &copy; Esri &mdash; Source: US National Park Service'
+    var NatGeoWorldAttribution =  'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'
+
+    var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
+    darkmatter   = L.tileLayer(DarkMatterUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
+    tonerbackground = L.tileLayer(StamenTonerBackgroundUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
+    voyagerclear = L.tileLayer(VoyagerClear, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
+    positronnolabel = L.tileLayer(PositronUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
+    
+    var worldstreetmap = L.tileLayer(WorldStreetMapUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: WorldStreetMapAttribution});
+    var stamenwatercolormap = L.tileLayer(StamenWaterColorUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: StamenWaterColorAttribution});
+    var voyargermap = L.tileLayer(VoyagerUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: VoyagerAttribution});
+    var worldphysicalmap = L.tileLayer(WorldPhysicalUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: WorldPhysicalAttribution});
+    var natgeomap = L.tileLayer(NatGeoWorldUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: NatGeoWorldAttribution});
+
+    const coordinates1 = [12.6009, 121.1622]     ;     //Main Coordinates
+    const coordinates2 = [14.65057, 121.05477];       //Central Coordinates
+    const coordinates3 = [42.322982, -71.095139];
+    const coordinates4 = [12.007854, 120.200812];     // Coron, Palawan
+    const coordinates5 = [12.45057, 121.05477];       // Philippines left
+    const coordinates6 = [12.45057, 122.5477];       // Philippines col-lg-12
+
+    var mymap = L.map('mapid', {
+        layers: [voyagerclear, cities],
+        minZoom: 6,
+        maxZoom: 10,
+    }).setView(coordinates6, 6.5);
+
+    var baseMaps = {
+        "Voyager Clear": voyagerclear,
+        "World Street Map": worldstreetmap,
+        "Stamen Water Color Map": stamenwatercolormap,
+        "World Physical Map": worldphysicalmap,
+        "NatGeo Worl Map": natgeomap,
+
+        "<span style='color: grey'>Positron</span>": positronnolabel,
+        "<span style='color: grey'>Voyager</span>": grayscale,
+        "<span style='color: grey'>Dark Matter</span>": darkmatter, 
+        "<span style='color: grey'>Toner Background</span>": tonerbackground,
+    };
+
+    var overlayMaps = {
+        "Cities": cities,
+        "Clusters": cities
+    };
+
+    function me(){
+      alert("More features coming soon!");
+    };
+
+    const jsonurl = "https://canonminds.github.io/Philippines-Local-Data/WebMapFlightPoints.geojson"
+      $.getJSON(jsonurl, function(data){
+        var mapIcon = L.icon({
+            iconUrl: "{% static 'images/icon.svg' %}",
+            iconSize: [25,25]
+        });
+        var geojsonLayer = L.geoJSON(data, {
+          pointToLayer: function(feature, latlng) {
+            var marker = L.marker(latlng, {icon: mapIcon});
+            popup = new L.Popup({ autoClose: false, closeOnClick: false })
+              .setContent(
+                feature.properties.Action  + '<br/>' 
+                + feature.properties.ADM3_EN +", "
+                + feature.properties.ADM2_EN + '<br/>');
+            marker.bindPopup(popup);
+            return marker;
+          },
+        });
+    });
+
+    const photoImg = '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" height="50%" width="90%"/>';
+    const polygonurl = "https://canonminds.github.io/Philippines-Local-Data/WebMapFlightPolygons.geojson"
+    $.getJSON(polygonurl, function(data){
+    var geojsonPolygonLayer = L.geoJson(data,{
+        style: function(feature){
+            return { 
+                color: "#6F3333", 
+                weight: 3, 
+                fillOpacity: .6 };
+        },
+        onEachFeature: function( feature, layer ){
+        layer.bindPopup( photoImg + "<br><strong>" + feature.properties.ADM3_EN +", " + feature.properties.ADM2_EN + "</strong><br> (" 
+        + feature.properties.Action + ")").openPopup();
+        }
+    }).addTo(mymap);
+    });
+
+    L.control.layers(baseMaps).addTo(mymap);
+
+</script>
+</body>
+</html>
+
