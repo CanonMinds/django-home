@@ -54,6 +54,7 @@ urlpatterns = [
     url(r'webscraping/', include(('webscraping.urls', 'webscraping'), namespace='webscraping')),
     url(r'dynamicmapping/', include(('dynamicmapping.urls', 'dynamicmapping'), namespace='dynamicmapping')),
     url(r'soaptask/', include(('soaptask.urls', 'soaptask'), namespace='soaptask')),
+    url(r'searchlocations/', include('searchlocations.urls', 'searchlocations')),
     # url(r'tasks/', include('tasks.urls', namespace='tasks')),
 ]
 
