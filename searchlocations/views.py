@@ -5,14 +5,14 @@ from django.http import HttpResponse
 # Create your views here.
 from django.views.generic import TemplateView, ListView
 
-from .models import Province
+from .models import Location
 
 class ProvincePageView(ListView):
-    model = Province
+    model = Location
     template_name = 'searchlocations/search_base.html'
 
 class SearchResultsView(ListView):
-    model = Province
+    model = Location
     template_name = 'searchlocations/search_results.html'
     # queryset = model.objects.filter(name__icontains='Laguna')
 
@@ -23,7 +23,7 @@ class SearchResultsView(ListView):
         # )
 
         query = self.request.GET.get('q')
-        object_list = Province.objects.filter(
+        object_list = Location.objects.filter(
             Q(city__icontains=query) | 
             Q(region__icontains=query) |
             Q(products__icontains=query) | 

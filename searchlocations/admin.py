@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Province
+from .models import Location
 
-class ProvinceAdmin(admin.ModelAdmin):
+class LocationAdmin(admin.ModelAdmin):
     list_display = ("city", "region", "products", "area")
 
-admin.site.register(Province, ProvinceAdmin)
+admin.site.register(Location, LocationAdmin)

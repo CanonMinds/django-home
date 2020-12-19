@@ -14,13 +14,13 @@
 <div>
   {% if object_list %}
 
-  {% for province in object_list %}     
-      <a href="#"><h3>Province of {{ province.city }}</h3></a>
+  {% for location in object_list %}     
+      <a href="#"><h3>location of {{ location.city }}</h3></a>
       <ul style="list-style: none">
-          <li>Province: {{ province.city }}</li>
-          <li>Region: {{ province.region }}
-          <li>Total Land Area: {{ province.area }}</li>
-          <li>Products: {{ province.products }}</li>
+          <li>City: {{ location.city }}</li>
+          <li>Region: {{ location.region }}
+          <li>Total Land Area: {{ location.area }}</li>
+          <li>Products: {{ location.products }}</li>
       </ul>
   {% endfor %}
 
