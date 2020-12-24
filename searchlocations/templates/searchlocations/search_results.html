@@ -12,17 +12,17 @@
 </div>
 
 <div>
-  {% if object_list %}
+{% if object_list %}
 
-  {% for location in object_list %}     
-      <a href="#"><h3>Location of {{ location.city }}</h3></a>
-      <ul style="list-style: none">
-          <li>City: {{ location.city }}</li>
-          <li>Region: {{ location.region }}
-          <li>Total Land Area: {{ location.area }}</li>
-          <li>Products: {{ location.products }}</li>
-      </ul>
-  {% endfor %}
+{% for location in object_list %}     
+    <a href="#"><h3>Location of {{ location.city }}</h3></a>
+    <ul style="list-style: none">
+        <li>City: {{ location.city }}</li>
+        <li>Region: {{ location.region }}
+        <li>Total Land Area: {{ location.area }}</li>
+        <li>Products: {{ location.products }}</li>
+    </ul>
+{% endfor %}
 
 
 {% else %}
