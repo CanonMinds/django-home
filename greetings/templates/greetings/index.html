@@ -67,7 +67,7 @@ body{
         <div class="display:flex; justify-content: center">
             {% if username %}
             <p class="top-text">HAPPY NEW YEAR<br></p>
-            <p class="bottom-text">{{username}}!</p>
+            <p class="bottom-text">{{username|title}}!</p>
             {% else %}
             <p class="top-text">HAPPY NEW YEAR !<br></p>
             {% endif %}
