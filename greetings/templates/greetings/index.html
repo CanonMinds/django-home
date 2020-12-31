@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Brawler&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+<head>
+	<title>NEW YEAR!</title>
+</head>
+<style>
+body{
+    color:white;
+    background-color:rgba(11,38,71,1);
+    opacity: 1;
+    color:white
+}
+
+#particle {
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:0;
+    margin:20px;
+    border-radius: 12px;
+    opacity: 0.35;
+    box-shadow: 0px 8px 12px 0px rgba(0,0,0,0.12);
+}
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    z-index: 100;
+}
+.top-text{
+    position: relative;
+    font-size: 8vw;;
+    font-family: 'Brawler', serif;
+    animation: zoomIn;
+    animation-duration: 3s;
+    z-index: 1001; 
+}
+
+.bottom-text{
+    position: relative;
+    font-size: 8vw;
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    animation: zoomIn;
+    animation-duration: 3s;
+    z-index: 1001;
+}
+
+</style>
+<body>
+    <div id="particle"></div>
+    <div class="overlay">
+        <div class="display:flex; justify-content: center">
+            {% if username %}
+            <p class="top-text">HAPPY NEW YEAR<br></p>
+            <p class="bottom-text">{{username}}!</p>
+            {% else %}
+            <p class="top-text">HAPPY NEW YEAR !<br></p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    var options = 
+    {"particles":{
+        "number": {
+                "value": 160,
+                "density": {
+                    "enable": false
+                }
+            },
+            "size": {
+                "value": 9,
+                "random": true
+            },
+            "move": {
+                "direction": "top",
+                "out_mode": "out"
+            },
+            "color": {
+              "value": ["#97999B", "#a79344"]
+            },
+            "line_linked": {
+                "enable": false
+            }
+        },
+        "interactivity": {
+            "events": {
+                "onclick": {
+                    "enable": true,
+                    "mode": "repulse"
+                }
+            },
+            "modes": {
+                "remove": {
+                    "particles_nb": 10
+                }
+            }
+        }};
+particlesJS("particle", options);
+</script>

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'dynamicmapping',
     'soaptask',
     'searchlocations',
+    'greetings',
 ]
 
 MIDDLEWARE = [

@@ -55,7 +55,7 @@ urlpatterns = [
     url(r'dynamicmapping/', include(('dynamicmapping.urls', 'dynamicmapping'), namespace='dynamicmapping')),
     url(r'soaptask/', include(('soaptask.urls', 'soaptask'), namespace='soaptask')),
     url(r'searchlocations/', include('searchlocations.urls', 'searchlocations')),
-    url(r'greeting/', include('greeting.urls', 'greeting')),
+    url(r'writesomethinghere/', include('greetings.urls', 'greetings')),
     # url(r'tasks/', include('tasks.urls', namespace='tasks')),
 ]
 
