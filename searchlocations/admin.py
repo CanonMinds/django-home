@@ -5,5 +5,7 @@ from .models import Location
 
 class LocationAdmin(admin.ModelAdmin):
     list_display = ("city", "region", "products", "area")
+    list_filter = ("region", )
+    search_fields = ("city", "region", "products", "area")
 
 admin.site.register(Location, LocationAdmin)
