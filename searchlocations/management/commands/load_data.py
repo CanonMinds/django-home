@@ -13,12 +13,14 @@ class Command(BaseCommand):
 
         Location.objects.all().delete()
         for row in reader:
-            print(row)
+            # print(row)
+            # print("Hello")
 
-        m = Location(
-            city=row[0],
-            region=row[1],
-            area=row[2],
-            products=row[3]
-        )
-        m.save()
+            m = Location(
+                city=row[0],
+                region=row[5],
+                area='0.0',
+                products='null',
+            )
+            print(m.region)
+            m.save()

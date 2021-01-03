@@ -1,2 +1,165 @@
-city,region,area,products
-Chicken,NCR,2123.12,wood
+city,lat,lng,country,iso2,admin_name,capital,population,population_proper
+Manila,14.5958,120.9772,Philippines,PH,Manila,primary,23088000,1780148
+Quezon City,14.6333,121.0333,Philippines,PH,Quezon,admin,2936116,2936116
+Davao,7.0667,125.6,Philippines,PH,Davao,admin,1632991,1632991
+Caloocan City,14.65,120.9667,Philippines,PH,Caloocan,admin,1583978,1583978
+Cebu City,10.3,123.9,Philippines,PH,Cebu,admin,922611,922611
+Zamboanga City,6.9167,122.0833,Philippines,PH,Zamboanga,admin,861799,861799
+Taguig City,14.5167,121.05,Philippines,PH,Taguig,admin,804915,804915
+Antipolo,14.5842,121.1763,Philippines,PH,Rizal,admin,776386,776386
+Pasig City,14.575,121.0833,Philippines,PH,Pasig,admin,755300,755300
+Cagayan de Oro,8.4833,124.65,Philippines,PH,Cagayan de Oro,admin,675950,675950
+City of Parañaque,14.4667,121.0167,Philippines,PH,Parañaque,admin,665822,665822
+Dasmariñas,14.3294,120.9367,Philippines,PH,Cavite,,659019,659019
+Valenzuela,14.7,120.9833,Philippines,PH,Valenzuela,admin,620422,620422
+Bacoor,14.4624,120.9645,Philippines,PH,Cavite,,600609,600609
+General Santos,6.1167,125.1667,Philippines,PH,General Santos,admin,594446,594446
+Las Pinas City,14.45,120.9833,Philippines,PH,Las Piñas,,588894,588894
+Makati City,14.55,121.0333,Philippines,PH,Makati,admin,582602,582602
+San Jose del Monte,14.8139,121.0453,Philippines,PH,Bulacan,,574089,574089
+Bacolod,10.6765,122.9509,Philippines,PH,Bacolod,admin,561875,561875
+Muntinlupa City,14.3833,121.05,Philippines,PH,Muntinlupa,admin,504509,504509
+City of Calamba,14.2167,121.1667,Philippines,PH,Laguna,,454486,454486
+Marikina City,14.65,121.1,Philippines,PH,Marikina,admin,450741,450741
+Iloilo,10.7167,122.5667,Philippines,PH,Iloilo,admin,447992,447992
+Pasay City,14.55,121,Philippines,PH,Pasay,admin,416522,416522
+Angeles City,15.1472,120.5847,Philippines,PH,Angeles,admin,411634,411634
+Lapu-Lapu City,10.315,123.9761,Philippines,PH,Lapu-Lapu,admin,408112,408112
+Imus,14.4297,120.9367,Philippines,PH,Cavite,,403785,403785
+Mandaluyong City,14.5833,121.0333,Philippines,PH,Mandaluyong,admin,386276,386276
+Malabon,14.6625,120.9567,Philippines,PH,Malabon,admin,365525,365525
+Mandaue City,10.3333,123.9333,Philippines,PH,Mandaue,admin,362654,362654
+Santa Rosa,14.3167,121.1167,Philippines,PH,Laguna,,353767,353767
+Baguio City,16.4152,120.5956,Philippines,PH,Baguio,admin,345366,345366
+Iligan,8.2333,124.25,Philippines,PH,Iligan,admin,342618,342618
+Tarlac City,15.4802,120.5979,Philippines,PH,Tarlac,admin,342493,342493
+Butuan,8.9534,125.5288,Philippines,PH,Butuan,admin,337063,337063
+Binan,14.3333,121.0833,Philippines,PH,Laguna,,333028,333028
+Lipa City,13.9411,121.1622,Philippines,PH,Batangas,,332386,332386
+Batangas,13.75,121.05,Philippines,PH,Batangas,admin,329874,329874
+San Pedro,14.3583,121.0583,Philippines,PH,Laguna,,325809,325809
+General Trias,14.3833,120.8833,Philippines,PH,Cavite,,314303,314303
+Cabuyao,14.275,121.125,Philippines,PH,Laguna,,308745,308745
+San Fernando,15.0333,120.6833,Philippines,PH,Pampanga,admin,306659,306659
+Cabanatuan City,15.4833,120.9667,Philippines,PH,Nueva Ecija,,302231,302231
+Cotabato,7.2167,124.25,Philippines,PH,Cotabato,admin,299438,299438
+Cadiz,10.9587,123.3086,Philippines,PH,Negros Occidental,,283157,129053
+Lucena,13.9333,121.6167,Philippines,PH,Lucena,admin,266248,266248
+San Pablo,14.0667,121.3167,Philippines,PH,Laguna,,266068,266068
+Tagum,7.4478,125.8078,Philippines,PH,Davao del Norte,admin,259444,259444
+Puerto Princesa,9.75,118.75,Philippines,PH,Puerto Princesa,admin,255116,255116
+Malolos,14.8433,120.8114,Philippines,PH,Bulacan,admin,252074,252074
+Mabalacat,15.2167,120.5833,Philippines,PH,Pampanga,,250799,250799
+Navotas,14.6667,120.9417,Philippines,PH,Navotas,admin,249463,249463
+Tacloban,11.2444,125.0039,Philippines,PH,Tacloban,admin,242089,242089
+Olongapo,14.8333,120.2833,Philippines,PH,Olongapo,admin,233040,233040
+Talisay,10.25,123.8333,Philippines,PH,Cebu,,227645,227645
+Ormoc,11.0167,124.6167,Philippines,PH,Ormoc,admin,215031,215031
+Meycauayan,14.7333,120.95,Philippines,PH,Bulacan,,209083,209083
+Marawi City,8,124.3,Philippines,PH,Lanao del Sur,admin,201785,201785
+Pagadian,7.8333,123.4333,Philippines,PH,Zamboanga del Sur,admin,199060,199060
+Legazpi City,13.1333,123.7333,Philippines,PH,Albay,admin,196639,196639
+Naga City,13.6167,123.1667,Philippines,PH,Naga,admin,196003,196003
+Malaybalay,8.1575,125.1278,Philippines,PH,Bukidnon,admin,174625,174625
+Dagupan City,16.0333,120.3333,Philippines,PH,Dagupan,admin,171271,171271
+Digos,6.75,125.35,Philippines,PH,Davao del Sur,admin,169393,169393
+Sorsogon,12.9667,124,Philippines,PH,Sorsogon,admin,168110,168110
+Roxas City,11.5833,122.75,Philippines,PH,Capiz,admin,167003,167003
+Trece Martires City,14.2833,120.8667,Philippines,PH,Cavite,admin,155713,155713
+Surigao,9.7833,125.4833,Philippines,PH,Surigao del Norte,admin,154137,154137
+Tuguegarao,17.6167,121.7167,Philippines,PH,Cagayan,admin,153502,153502
+Ilagan,17.1333,121.8833,Philippines,PH,Isabela,admin,145568,145568
+Mati,6.95,126.2333,Philippines,PH,Davao Oriental,admin,141141,141141
+Kidapawan,7.0083,125.0894,Philippines,PH,Cotabato,admin,140195,140195
+Santiago,16.6833,121.55,Philippines,PH,Santiago,admin,134830,134830
+Calapan,13.3667,121.2,Philippines,PH,Oriental Mindoro,admin,133893,133893
+Dumaguete City,9.3103,123.3081,Philippines,PH,Negros Oriental,admin,131377,131377
+Dipolog,8.5667,123.3333,Philippines,PH,Zamboanga del Norte,admin,130759,130759
+San Juan,14.6,121.0333,Philippines,PH,San Juan,admin,122180,122180
+San Fernando,16.6167,120.3167,Philippines,PH,La Union,admin,121812,121812
+City of Isabela,6.7,121.9667,Philippines,PH,Basilan,admin,112788,112788
+Laoag,18.2,120.6,Philippines,PH,Ilocos Norte,admin,111125,111125
+Tagbilaran City,9.65,123.85,Philippines,PH,Bohol,minor,105051,105051
+Catbalogan,11.7833,124.8833,Philippines,PH,Samar,admin,103879,103879
+Balanga,14.6833,120.5333,Philippines,PH,Bataan,admin,96061,96061
+Masbate,12.3667,123.6167,Philippines,PH,Masbate,admin,95389,95389
+Maasin,10.1333,124.85,Philippines,PH,Southern Leyte,admin,85560,85560
+Cabadbaran,9.1228,125.5346,Philippines,PH,Agusan del Norte,admin,73639,73639
+Oroquieta,8.4833,123.8,Philippines,PH,Misamis Occidental,admin,70757,70757
+Borongan,11.6,125.4333,Philippines,PH,Eastern Samar,admin,69297,69297
+Tandag,9.0667,126.1833,Philippines,PH,Surigao del Sur,admin,56364,56364
+Vigan,17.5747,120.3869,Philippines,PH,Ilocos Sur,admin,53879,53879
+Palayan City,15.5333,121.0833,Philippines,PH,Nueva Ecija,admin,41041,41041
+Catarman,12.4989,124.6377,Philippines,PH,Northern Samar,admin,,
+La Trinidad,16.4556,120.5903,Philippines,PH,Benguet,admin,,
+Kalibo,11.7086,122.3648,Philippines,PH,Aklan,admin,,
+San Jose,10.745,121.9415,Philippines,PH,Antique,admin,,
+Daet,14.1122,122.9553,Philippines,PH,Camarines Norte,admin,,
+Virac,13.5848,124.2374,Philippines,PH,Catanduanes,admin,,
+Bayombong,16.4812,121.1497,Philippines,PH,Nueva Vizcaya,admin,,
+Jolo,6.0522,121.0022,Philippines,PH,Sulu,admin,,
+Bongao,5.0292,119.7731,Philippines,PH,Tawi-Tawi,admin,,
+Baclayon,9.625,123.9109,Philippines,PH,Bohol,minor,,
+Argao,9.8814,123.6007,Philippines,PH,Cebu,minor,,
+Isulan,6.6294,124.6051,Philippines,PH,Sultan Kudarat,admin,,
+Candelaria,13.9311,121.4233,Philippines,PH,Quezon,minor,,
+San Juan,13.8285,121.3931,Philippines,PH,Batangas,minor,,
+Tiaong,13.9638,121.3212,Philippines,PH,Quezon,minor,,
+Boac,13.4463,121.84,Philippines,PH,Marinduque,admin,,
+Perez,14.1946,121.9264,Philippines,PH,Quezon,minor,,
+Tubod,8.0555,123.7904,Philippines,PH,Lanao del Norte,admin,,
+Mamburao,13.2233,120.596,Philippines,PH,Occidental Mindoro,admin,,
+Nabunturan,7.6029,125.9629,Philippines,PH,Compostela Valley,admin,,
+Malita,6.415,125.6117,Philippines,PH,Davao Occidental,admin,,
+Badian,9.8691,123.3947,Philippines,PH,Cebu,minor,,
+Bangued,17.5982,120.6155,Philippines,PH,Abra,admin,,
+Mambajao,9.2504,124.7156,Philippines,PH,Camiguin,admin,,
+Naval,11.5612,124.3952,Philippines,PH,Biliran,admin,,
+Barobo,8.5365,126.1196,Philippines,PH,Surigao del Sur,minor,,
+Alcantara,9.9717,123.4028,Philippines,PH,Cebu,minor,,
+Iba,15.3276,119.978,Philippines,PH,Zambales,admin,,
+Lingayen,16.0218,120.2319,Philippines,PH,Pangasinan,admin,,
+Dauis,9.6253,123.8658,Philippines,PH,Bohol,minor,,
+Romblon,12.5751,122.2708,Philippines,PH,Romblon,admin,,
+Lianga,8.6336,126.0947,Philippines,PH,Surigao del Sur,minor,,
+Dalaguete,9.7618,123.5332,Philippines,PH,Cebu,minor,,
+Alabel,6.1018,125.2905,Philippines,PH,Sarangani,admin,,
+Padre Burgos,13.9226,121.8116,Philippines,PH,Quezon,minor,,
+Baler,15.7589,121.5607,Philippines,PH,Aurora,admin,,
+Maribojoc,9.7436,123.8429,Philippines,PH,Bohol,minor,,
+Siquijor,9.2142,123.515,Philippines,PH,Siquijor,admin,,
+Lagawe,16.8,121.1192,Philippines,PH,Ifugao,admin,,
+Ipil,7.7844,122.5861,Philippines,PH,Zamboanga Sibugay,admin,,
+Basco,20.4486,121.9702,Philippines,PH,Batanes,admin,,
+Shariff Aguak,6.8647,124.4417,Philippines,PH,Maguindanao,admin,,
+Cabarroguis,16.5111,121.5212,Philippines,PH,Quirino,admin,,
+Jordan,10.6584,122.5963,Philippines,PH,Guimaras,admin,,
+Bontoc,17.0899,120.978,Philippines,PH,Mountain,admin,,
+Kabugao,18.0231,121.184,Philippines,PH,Apayao,admin,,
+Prosperidad,8.58,125.8964,Philippines,PH,Agusan del Sur,admin,,
+Santa Cruz,14.1167,121.2833,Philippines,PH,Laguna,admin,,
+Koronadal,6.2541,124.9922,Philippines,PH,South Cotabato,admin,,
+San Jose,10.18,125.5683,Philippines,PH,Dinagat Islands,admin,,
+Tabuk,17.4084,121.2785,Philippines,PH,Kalinga,admin,,
+Pili,13.7177,123.7448,Philippines,PH,Camarines Sur,admin,,
+Buguey,18.2882,121.8331,Philippines,PH,Cagayan,minor,,
+San Antonio,13.8965,121.2902,Philippines,PH,Quezon,minor,,
+Hinatuan,8.3689,126.3352,Philippines,PH,Surigao del Sur,minor,,
+Lupon,6.8981,126.0096,Philippines,PH,Davao Oriental,minor,,
+Poblacion,6.8037,124.6367,Philippines,PH,Sultan Kudarat,minor,,
+Panay,11.5563,122.791,Philippines,PH,Capiz,minor,,
+Magalang,15.2154,120.6617,Philippines,PH,Pampanga,minor,,
+Agdangan,13.8771,121.9131,Philippines,PH,Quezon,minor,,
+Monkayo,7.817,126.0524,Philippines,PH,Compostela Valley,minor,,
+Tingloy,13.6609,120.8711,Philippines,PH,Batangas,minor,,
+Anda,9.7444,124.5754,Philippines,PH,Bohol,minor,,
+Talipao,5.9764,121.1161,Philippines,PH,Sulu,minor,,
+Kabasalan,7.7981,122.7636,Philippines,PH,Zamboanga Sibugay,minor,,
+Sikatuna,9.6904,123.973,Philippines,PH,Bohol,minor,,
+Padre Burgos,10.0369,125.0192,Philippines,PH,Southern Leyte,minor,,
+Roseller Lim,7.6561,122.4671,Philippines,PH,Zamboanga Sibugay,minor,,
+Banaybanay,6.9623,126.0172,Philippines,PH,Davao Oriental,minor,,
+President Quirino,6.7253,124.7382,Philippines,PH,Sultan Kudarat,minor,,
+Corella,9.6896,123.9197,Philippines,PH,Bohol,minor,,
+Madridejos,9.7912,123.3462,Philippines,PH,Cebu,minor,,
+Claveria,12.9035,123.2457,Philippines,PH,Masbate,minor,,

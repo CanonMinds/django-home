@@ -3,19 +3,20 @@
 {% block body_content %}
 
 <div style="margin: 20px;">
-{% for province in object_list %}
+
+<h4 style="margin-top: 50px;"><strong>Search Available Province Detail</strong></h4>
+<form action="{% url 'searchlocations:search_result_list' %}" method="get">
+  <input name="q" type="text" placeholder="Enter any keyword, letter, number..." autocomplete="off">
+</form>
 <h4><strong>List of Available Provinces</strong></h4>
     <ul>
+      {% for province in object_list %}
       <li>
         {{ province }}
       </li>
+      {% empty %}
+      <h4><strong>No Available Provinces</strong></h4>
+      {% endfor %}
     </ul>
-    <h4 style="margin-top: 50px;"><strong>Search Available Province Detail</strong></h4>
-    <form action="{% url 'searchlocations:search_result_list' %}" method="get">
-        <input name="q" type="text" placeholder="Enter any keyword, letter, number..." autocomplete="off">
-    </form>
-{% empty %}
-<h4><strong>No Available Provinces</strong></h4>
-{% endfor %}
 </div>
 {% endblock %} 
