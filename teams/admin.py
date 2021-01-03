@@ -13,6 +13,7 @@ class StatusAdmin(admin.ModelAdmin):
 
 
 class TeamAdmin(admin.ModelAdmin):
+    search_fields = ['team', ]
     inlines = [StatusInline]
 
 admin.site.register(models.Team, TeamAdmin)
