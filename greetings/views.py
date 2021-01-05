@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-# Create your views here.
+
 def flashword(request, username):
     template_name = 'greetings/index.html'
     context = {'username' : username,}
