@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['decagon4.herokuapp.com', '127.0.0.1']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -146,7 +145,6 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-
 
 #REST Framework
 REST_FRAMEWORK = {

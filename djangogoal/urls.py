@@ -17,11 +17,9 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
 
-
 #Shopping Store imports
 from django.conf.urls.static import static
 from django.conf import settings
-
 
 #Rest New imports
 from rest_framework import routers
@@ -36,7 +34,6 @@ router.register(r'reviews', task_views.ReviewViewSet)
 
 urlpatterns = [
     url(r'admin/', admin.site.urls, name="admin"),
-    # url(r'^auth/', include('newauth.urls')),
 
     url('signup/', team_views.signupPage, name = 'signup'),
     url('login/', team_views.loginPage, name = 'login'),
@@ -56,7 +53,6 @@ urlpatterns = [
     url(r'soaptask/', include(('soaptask.urls', 'soaptask'), namespace='soaptask')),
     url(r'searchlocations/', include('searchlocations.urls', 'searchlocations')),
     url(r'writesomethinghere/', include('greetings.urls', 'greetings')),
-    # url(r'tasks/', include('tasks.urls', namespace='tasks')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
