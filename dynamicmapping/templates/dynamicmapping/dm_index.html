@@ -53,7 +53,7 @@
       background-color: #163c47;
     }
     .icsc-btn-secondary:hover {
-      background-color:#1f5b6b; /* Green */
+      background-color:#1f5b6b;
       color: #f3ca63;;
     }
     .icsc-btn-secondary-current{
@@ -90,8 +90,7 @@
       <div class="col-lg-3" style="display: none;">
           <div></div>
           <div class="mt-3">
-            <a href="{% url 'dynamicmapping:dynamicmapping_interior' %}"><button type="button" class="layerbtn btn btn-primary btn-lg btn-block mt-5">Map Layer</button></a>
-          <!-- <button type="button" class="layerbtn btn btn-primary btn-lg btn-block mt-3">Turn off Points Layer</button>   -->
+              <a href="{% url 'dynamicmapping:dynamicmapping_interior' %}"><button type="button" class="layerbtn btn btn-primary btn-lg btn-block mt-5">Map Layer</button></a>
           <button type="button" class="layerbtn btn btn-secondary btn-lg btn-block mt-3" onClick="window.location.reload()">Clear Filter</button>
           </div>
       </div>  
@@ -133,7 +132,7 @@
     voyagerclear = L.tileLayer(VoyagerClear, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
     positronnolabel = L.tileLayer(PositronUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});;
     
-    const coordinates1 = [12.6009, 121.1622]     ;     //Main Coordinates
+    const coordinates1 = [12.6009, 121.1622]     ;    //Main Coordinates
     const coordinates2 = [14.65057, 121.05477];       //Central Coordinates
     const coordinates3 = [42.322982, -71.095139];
     const coordinates4 = [12.007854, 120.200812];     // Coron, Palawan
@@ -144,7 +143,6 @@
         minZoom: 5.45,
         maxZoom: 20 
     }).setView(coordinates5, 5.45);
-
 
     var baseMaps = {
         "Voyager Clear": voyagerclear,
@@ -181,11 +179,7 @@
           mymap.addLayer(clusters);          
     });
 
-
-
     L.control.layers(baseMaps).addTo(mymap);
-
-
 
     var popup = L.popup();
     function onMapClick(e) {
@@ -212,19 +206,6 @@
         }
     }).addTo(mymap);
     });
-
-
-    // const photoImg = '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" height="150px" width="300px"/>';
-    // const palawanjsonurl = "https://canonminds.github.io/Philippines-Local-Data/WebMapFlightPolygons.geojson"
-    // $.getJSON(palawanjsonurl, function(data){
-    // // add GeoJSON layer to the map once the file is loaded
-    // L.geoJson(data,{
-    //   onEachFeature: function( feature, layer ){
-    //         layer.bindPopup( photoImg + "<br><strong>" + feature.properties.ADM3_EN +", " + feature.properties.ADM2_EN + "</strong> (" 
-    //         + feature.properties.Action + ")").openPopup();
-    //   }
-    // }).addTo(mymap);
-    // });
 
     function me(){
       alert("More features coming soon!");
