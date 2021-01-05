@@ -8,7 +8,7 @@ class Command(BaseCommand):
     def handle(self, **options):
         fhand = open('searchlocations/load.csv')
         reader = csv.reader(fhand)
-        next(reader)  # Advance past the header
+        next(reader)
         Location.objects.all().delete()
         for row in reader:
             m = Location(
