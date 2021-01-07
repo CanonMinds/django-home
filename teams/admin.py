@@ -4,6 +4,7 @@ from django.contrib import admin
 
 from . import models
 
+
 class StatusInline(admin.TabularInline):
     model = models.Status_detail
 

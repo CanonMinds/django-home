@@ -1,5 +1,6 @@
 from django.contrib import messages
 
+
 class PageTitleMixin:
     page_title=""
 
@@ -11,8 +12,7 @@ class PageTitleMixin:
         context["page_title"] = self.get_page_title()
         return context
 
-
-            
+      
 class SuccessMessageMixin:
     success_message = ""
     
