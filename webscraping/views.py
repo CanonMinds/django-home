@@ -5,12 +5,12 @@ from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import (ListView, DetailView, CreateView, UpdateView, DeleteView,)
 
+import time
 import requests
 from bs4 import BeautifulSoup
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 from django.http import HttpResponse    
-import time
 
 from . import models
  
