@@ -23,4 +23,14 @@ class Location(models.Model):
       verbose_name_plural = "locations"
 
     def __str__(self):
-        return self.city  
+        return self.city
+
+class TestLocation(models.Model):
+    address = models.CharField("Address", max_length=255, null=True, blank=True)
+
+    class Meta:
+      verbose_name_plural = "testlocations"
+
+    def __str__(self):
+        return self.address
+    
