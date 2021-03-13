@@ -1,2 +1,2 @@
 # DjangoStarter
-Class-based Views, DRFs, E-commerce, PayPal APIs
+https://decagon4.herokuapp.com/
