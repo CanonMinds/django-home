@@ -27,4 +27,4 @@ f. SOAP Requests on a Math Operations url
 https://decagon4.herokuapp.com/soaptask/
 
 g. Customizable Message Greeting Via URL:
-https://decagon4.herokuapp.com/writesomethinghere/<INSERT TEXT>
+https://decagon4.herokuapp.com/writesomethinghere/ + <INSERT TEXT HEREEE>
