@@ -1,5 +1,4 @@
-# The Django Starter
-
+# The Django Starter!!!
 Yey! Just Another Django Project hosted in heroku.
 https://decagon4.herokuapp.com/
 
