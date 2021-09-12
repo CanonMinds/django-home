@@ -8,13 +8,8 @@
         display: flex;
         margin:10px 20px 10px 20px;
     }
-    .splashtask {
-        /* display: flex; */
-        font-size: 16px;
-        text-align: center;
-    }
     .user_card{
-        background-color:rgba(42, 42, 46, 1);
+        background-color:#eee;
         opacity: 90%;
         padding-top:20px;
         padding-bottom:10px;
@@ -24,75 +19,44 @@
 			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			border-radius: 16px;
     }
-    .errorlist{
-        color: white;
+    .form_container {
+        margin: 20px;
     }
 </style>
-
-<div style="margin-top: 10px">
-<div class="">
-    <div class="user_card justify-content-center">
-        <div class="" >
-            <div class=" justify-content-center"> 
-                <h3 class="splashtask" style="margin:10px 0px 25px 0px; color:white;">REGISTER ACCOUNT</h3>
-            </div>
-            <div class="">
-
-                <form method="POST" action="">
-                    {% csrf_token %}
-                    <div class="input-field input-group mb-3">
-                        {{form.username}}
-                    </div>
-                    <div class="input-field input-group mb-2">
-                        {{form.email}}
-                    </div>
-                    <div class="input-field input-group mb-2">
-                        {{form.password1}}
-                    </div>
-                    <div class="input-field input-group mb-2">
-                        {{form.password2}}
-                    </div>
-
-                       <div class="limit justify-content-center">
-                         <input class="btn login_btn" type="submit" value="Register Account">
-                       </div>
-                </form>
-            </div>
-    
-            {{form.errors}}
-            
-            <div class="mt-2" style="margin-bottom: 10px;">
-                <div class="splashtask" style="font-size: 12px; margin-top: 30px; color:white">
-                    Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
+<div class="splasher">
+    <div class="" style="padding: 20px 20px 30px 20px; text-align: center;">
+        <h3 id="form-title" style="text-align: center;">CREATE ACCOUNT</h3>
+        <div class="justify-content-center form_container">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="input-field">
+                    {{form.username}}
                 </div>
+                <div class="input-field">
+                    {{form.email}}
+                </div>
+                <div class="input-field">
+                    {{form.password1}}
+                </div>
+                <div class="input-field">
+                    {{form.password2}}
+                </div>
+                    <div class="limit justify-content-center">
+                        <input class="btn btn-primary" type="submit" value="Register Account">
+                    </div>
+            </form>
+        </div>
+
+        {% for message in messages %}
+            <p id="messages">{{ message }}</p>
+        {% endfor %}
+        {{form.errors}}
+
+        <div class="" style="text-align: center; margin-top: 10px;">
+            <div class="d-flex justify-content-center links">
+                Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
             </div>
         </div>
     </div>
 </div>
-</div>
-    <!-- <h1 class="text-center">Signup</h1>
-
-    <form method="POST" action="">
-        
-        {% csrf_token %}
-
-        {{form.username.label}}
-        {{form.username}}
-
-        {{form.email.label}}
-        {{form.email}}
-
-        {{form.password1.label}}
-        {{form.password1}}
-
-        {{form.password2.label}}
-        {{form.password2}} -->
-
-        <!-- {% for field in form %}
-            {{field.label}}
-            {{field}}
-        {% endfor %} -->
-        <!-- Otherway to transform the register/login form  -->
-        <!-- <input type="submit" name="Create User">
-    </form> -->
 {% endblock %}

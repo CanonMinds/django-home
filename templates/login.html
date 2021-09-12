@@ -3,27 +3,23 @@
 {% block sidebar %}{% endblock %}
 
 {% block body_content %}
-<div class="">
-    <div class="d-flex justify-content-center">
-        <div class="user_card" style="margin: 0px 0px;">
-            <div class="d-flex justify-content-center" style="margin-top: 80px;">
-                <h3 id="form-title" style="text-align: center;">LOGIN</h3>
-            </div>
-            <div class="justify-content-center form_container">
+<div class="splasher" style="display: flex; justify-content: center; background-color:#eee; border-radius: 20px;">
+    <div class="" style="padding: 20px 20px 30px 20px; text-align: center;">
+        <h3 id="form-title" style="text-align: center;">DEFAULT GUEST LOGIN</h3>
+            <div class="justify-content-center form_container" style="margin-top: -25px;">
                 <form method="POST" action="">
                     {% csrf_token %}
                     <div class="input-group" style="display: block;">
-                        <input type="text" name="username" placeholder="Username..." style="margin-bottom:10px;">
+                        <input type="text" name="username" placeholder="Username..." style="margin-bottom:10px;" value="SampleGuest">
                     </div>
                     <div class="input-group" style="display: block; margin-top: 50px;">
                             <input type="password1" name="password1" placeholder="Password..." style="display: none;">
-                            <input type="password" name="password" placeholder="Password..." style="margin-bottom:20px;">
+                            <input type="password" name="password" placeholder="Password..." style="margin-bottom:20px;" value="password123123">
                     </div>
                         <div class="">  
                              <input class="btn login_btn btn-primary" type="submit" value="Login">
                         </div>
                 </form>
-
             </div>
     
             {% for message in messages %}
@@ -35,9 +31,7 @@
                 <div class="d-flex justify-content-center links">
                     Don't have an account? <a href="{% url 'signup' %}" class="ml-2">Sign Up</a>
                 </div>
-        
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

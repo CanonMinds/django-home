@@ -1,27 +1,17 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.views.generic import View, TemplateView
-from django.http import JsonResponse
 import datetime
 import json
 
-
-
-# Create your views here.
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 from .models import *
-from .utils import cookieCart, cartData, guestOrder
+from .utils import cart_data
+from .utils import guest_order
 
-# class ProductsView(View):
-#     def get(self, request):
-#         return HttpResponse("Welcome to our Shopping Cart!")
-
-# class ProductsView(TemplateView):
-#     template_name = "products.html"
- 
 def store(request):
-
-    data = cartData(request)
+    data = cart_data(request)
     cartItems = data['cartItems']
 
     products = Product.objects.all()
@@ -29,8 +19,7 @@ def store(request):
     return render(request, 'products/store.html', context)
 
 def cart(request):
-
-    data = cartData(request)
+    data = cart_data(request)
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
@@ -38,10 +27,8 @@ def cart(request):
     context = {'items':items, 'order':order, 'cartItems': cartItems, }
     return render(request, 'products/cart.html', context)
 
-
 def checkout(request):
-
-    data = cartData(request)
+    data = cart_data(request)
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
@@ -49,13 +36,10 @@ def checkout(request):
     context = {'items':items,'order':order, 'cartItems': cartItems}
     return render(request, 'products/checkout.html', context)
 
-def updateItem(request):
+def update_item(request):
     data = json.loads(request.body)
     productId = data['productId']
     action = data['action']
-
-    print('Action:', action)
-    print('Product:', productId)
 
     customer = request.user.customer
     product = Product.objects.get(id=productId)
@@ -75,19 +59,16 @@ def updateItem(request):
     
     return JsonResponse('Item was added', safe=False)
 
-from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
-
-def processOrder(request):
+def process_order(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
 
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)    
-
     else:
-        customer, order = guestOrder(request, data)
+        customer, order = guest_order(request, data)
 
     total = float(data['form']['total'])
     order.transaction_id = transaction_id
@@ -105,7 +86,6 @@ def processOrder(request):
                 barangay=data['shipping']['barangay'],
                 zipcode=data['shipping']['zipcode'],
             )
-
     return JsonResponse('Payment complete!', safe=False)
 
     

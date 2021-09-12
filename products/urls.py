@@ -10,6 +10,6 @@ urlpatterns = [
     url(r'^$', views.store, name="products_list"),
     url(r'^cart/$', views.cart, name="cart"),
     url(r'^checkout/$', views.checkout, name="checkout"),
-    url(r'^update_item/$', views.updateItem, name="update_item"),
-    url(r'^process_order/$', views.processOrder, name="process_order"),
+    url(r'^update_item/$', views.update_item, name="update_item"),
+    url(r'^process_order/$', views.process_order, name="process_order"),
 ]
